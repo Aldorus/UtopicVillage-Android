@@ -49,8 +49,6 @@ public class YourAskingHelpAdapter extends ArrayAdapter<String> {
 			viewHolder.text = (TextView) rowView.findViewById(R.id.textCell);
 			viewHolder.date = (TextView) rowView.findViewById(R.id.sousTextCell);
 			viewHolder.id = (TextView) rowView.findViewById(R.id.idCell);
-			viewHolder.desc = (TextView) rowView.findViewById(R.id.descCell);
-			viewHolder.amount = (TextView) rowView.findViewById(R.id.amountCell);
 			rowView.setTag(viewHolder);
 		}
 

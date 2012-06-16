@@ -36,7 +36,7 @@ public class SplatchActivity extends MasterActivity {
                 if(storage.getUser().getName()==null){
                 	intent.setClass(sPlashScreen, ConnectActivity.class);
                 }else{
-                	intent.setClass(sPlashScreen, HelpMeActivity.class);
+                	intent.setClass(sPlashScreen, YourAskingHelpActivity.class);
                 	//si il y a déja les inforations on précharge
                 	//TODO
                 }

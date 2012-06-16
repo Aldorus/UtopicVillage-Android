@@ -3,6 +3,7 @@
     <dimen name="height_header">50dip</dimen>
     <dimen name="height_menu">30dip</dimen>
     <dimen name="corner_radius">2dip</dimen>
+    <dimen name="padding_content">5dip</dimen>
     <dimen name="margin_title">5dip</dimen>
     <dimen name="margin_button_menu">5dip</dimen>
     <dimen name="margin_text">10dip</dimen>
@@ -11,4 +12,5 @@
     <dimen name="padding_button">7dip</dimen>
     <dimen name="font_size_title_screen">16dip</dimen>
     <dimen name="font_size_menu">12dip</dimen>
+    <dimen name="font_size_little">10dip</dimen>
 </resources>

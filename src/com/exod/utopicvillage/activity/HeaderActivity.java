@@ -27,7 +27,7 @@ public class HeaderActivity extends MasterActivity{
 		
 		TextView labelAmount = (TextView)findViewById(R.id.label_amount);
 		if(labelAmount!=null){
-			labelAmount.setText(storage.getUser().getAmount()+"");
+			labelAmount.setText(storage.getUser().getAmount()+" points");
 		}
 	}
 }

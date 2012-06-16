@@ -2,7 +2,6 @@ package com.exod.utopicvillage.activity;
 
 import java.util.Hashtable;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +16,7 @@ public class DetailHelpActivity extends HeaderActivity{
 	Help help;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState,R.layout.detail_help,false,true);
+		super.onCreate(savedInstanceState,R.layout.detail_help);
 		
 		//on recupere l'aide stocké dans la hashtable de l'application
 		String idHelp = getIntent().getExtras().getString("idHelp");
@@ -33,8 +32,7 @@ public class DetailHelpActivity extends HeaderActivity{
 			TextView amountHelp = (TextView)findViewById(R.id.amountHelp);
 			
 			descHelp.setText(help.getDescritpion());
-			//TODO bug
-//			amountHelp.setText(help.getAmount());
+			amountHelp.setText(help.getAmount()+"");
 		}else{
 			//TODO error message
 		}

@@ -5,7 +5,9 @@
     <LinearLayout 
         android:id="@+id/your_asking_help"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        android:background="@drawable/balloon_overlay_unfocused">
+        
     </LinearLayout>
     <Button
         android:id="@+id/bouton_new_help"

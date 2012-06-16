@@ -8,7 +8,7 @@ import com.exod.utopicvillage.R;
 public class DetailYourHelpActivity extends HeaderActivity{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState,R.layout.detail_your_help,false,true);
+		super.onCreate(savedInstanceState,R.layout.detail_your_help);
 		
 		String id = getIntent().getExtras().getString("id");
 		String desc = getIntent().getExtras().getString("desc");

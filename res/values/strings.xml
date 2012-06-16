@@ -33,4 +33,5 @@
     <string name="volunteer">Se porter volontaire</string>
     <string name="you_re_volunteer">Vous êtez volontaire pour cette demande d\'aide</string>
     <string name="element_for_baloon">Element pour le balon</string>
+    <string name="cancel_help">Annuler cette demande</string>
 </resources>

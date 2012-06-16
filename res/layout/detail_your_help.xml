@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <TextView style="@style/TitleScreen"
+        <TextView style="@style/Texte"
             android:text="@string/help"
             android:textSize="18dip"/>
         

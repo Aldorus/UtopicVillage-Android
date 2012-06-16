@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.exod.utopicvillage.R;
 import com.exod.utopicvillage.entity.Help;
+import com.exod.utopicvillage.util.DateUtil;
 
 public class YourAskingHelpActivity extends TabMenuActivity{
 	@Override
@@ -40,28 +41,28 @@ public class YourAskingHelpActivity extends TabMenuActivity{
 			
 			//on affiche la demande d'aide effectuée
 			LinearLayout viewCell = (LinearLayout) findViewById(R.id.your_asking_help);
+			//on vide cette vue et on lui retire son background en vue de l'insertion de la vue inflatée
+			viewCell.setBackgroundDrawable(null);
+			
 			LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			View theInflatedView = inflater.inflate(R.layout.row_for_asking_help, null); // 2 and 3
 			viewCell.addView(theInflatedView);
 			
 			//on ajout les element de l'aide
+			
 			TextView textId = (TextView) theInflatedView.findViewById(R.id.idCell);
-			TextView textDesc = (TextView) theInflatedView.findViewById(R.id.textCell);
-			TextView textAmount = (TextView) theInflatedView.findViewById(R.id.amountCell);
-			TextView sousText= (TextView) theInflatedView.findViewById(R.id.sousTextCell);
 			TextView text = (TextView) theInflatedView.findViewById(R.id.textCell);
+			TextView sousText= (TextView) theInflatedView.findViewById(R.id.sousTextCell);
+			TextView nombre_point = (TextView) theInflatedView.findViewById(R.id.nombre_point);
+			TextView nombre_volunteer = (TextView) theInflatedView.findViewById(R.id.nombre_volunteer);
 			
 			textId.setText(help.getId()+"");
-			textDesc.setText(help.getDescritpion());
-			textAmount.setText(help.getAmount()+"");
-			sousText.setText("Demandé le "+help.getDate()+"");
+			text.setText(getResources().getString(R.string.ask_for)+DateUtil.convertToStringDifDate(help.getDate())+"");
+			sousText.setText(help.getDescritpion()+"pouette");
+			nombre_point.setText(help.getAmount()+" points");
+			//TODO
+			nombre_volunteer.setText(0+" participant");
 			
-			//si la chaine de description est trop longue on la coupe pour qu'elle rentre correctment dans la vue
-			if(help.getDescritpion().length()>100){
-				text.setText(help.getDescritpion().substring(0, 100)+" ...");
-			}else{
-				text.setText(help.getDescritpion());
-			}
 			
 			//on ajout un écouteur sur le layout
 			viewCell.setClickable(true);
@@ -70,26 +71,19 @@ public class YourAskingHelpActivity extends TabMenuActivity{
 				public void onClick(View view) {
 					TextView cellId = (TextView)view.findViewById(R.id.idCell);
 					String stringId = cellId.getText()+"";
-					TextView cellDesc = (TextView)view.findViewById(R.id.descCell);
-					String stringDesc = cellDesc.getText()+"";
-					TextView cellAmount = (TextView)view.findViewById(R.id.amountCell);
-					String stringAmount = cellAmount.getText()+"";
-					
 					
 					Intent intent = new Intent(getApplicationContext(), DetailYourHelpActivity.class);
 					intent.putExtra("id", stringId);
-					intent.putExtra("desc", stringDesc);
-					intent.putExtra("amount", stringAmount);
 					startActivity(intent);
 				}
 			}); 
-		}else{
-			//on affiche un message
-			LinearLayout linear_asking = (LinearLayout)findViewById(R.id.your_asking_help);
-			TextView textViewMessage = new TextView(utopicVillageApplication);
-			textViewMessage.setText(getResources().getString(R.string.no_helpQ));
-			linear_asking.addView(textViewMessage);
 		}
+		//sinon on laisse le message et la vue par defaut
+		LinearLayout linear_asking = (LinearLayout)findViewById(R.id.your_asking_help);
+		TextView textViewMessage = new TextView(utopicVillageApplication);
+		textViewMessage.setText(getResources().getString(R.string.no_helpQ));
+		textViewMessage.setTextColor(getResources().getColor(R.color.text_color));
+		linear_asking.addView(textViewMessage);
 	}
 	
 	

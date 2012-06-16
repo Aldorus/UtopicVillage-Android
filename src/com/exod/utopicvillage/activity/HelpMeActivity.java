@@ -14,8 +14,6 @@ public class HelpMeActivity extends HeaderActivity{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState,R.layout.help_me);
-	    setContentView(R.layout.help_me);
-	    setHeader();
 	}
 	
 	public void goAskHelp(View view){
