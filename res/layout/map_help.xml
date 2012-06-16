@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/ContentLinear">
+    
+    <com.google.android.maps.MapView
+        	android:id="@+id/map_for_help"
+        	android:clickable="true"
+        	android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:apiKey="09Is1g6wFNmt2aZdmtOipbSmZaHillsTnJ0w0uA"/>
+            
+    <Button
+        style="@style/Button"
+        android:text="@string/search" />
+</LinearLayout>
