@@ -37,7 +37,7 @@ public class DateUtil {
 			
 		}else if(time/(1000*60*60*24)>=1){
 			//il y a plus d'un jour
-			if(time/(1000*60*60*24)>1){
+			if(time/(1000*60*60*24)>=2){
 				return time/(1000*60*60*24)+" jours";
 			}else{
 				return time/(1000*60*60*24)+" jour";
@@ -51,9 +51,9 @@ public class DateUtil {
 				return time/(1000*60*60)+" heure";
 			}
 			
-		}else if(time/(1000*60)>0){
+		}else if(time/(1000*60)>=1){
 			//il y a plus d'une minute
-			if(time/(1000*60)>1){
+			if(time/(1000*60)>=2){
 				return time/(1000*60)+" minutes";
 			}else{
 				return time/(1000*60)+" minute";
@@ -66,7 +66,8 @@ public class DateUtil {
 			}else{
 				return time/(1000)+" seconde";
 			}
+		}else {
+			return "quelques secondes";
 		}
-		return null;
 	}
 }

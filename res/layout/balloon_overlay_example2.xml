@@ -15,7 +15,7 @@
     
     <LinearLayout
         android:id="@+id/balloon_inner_layout"
-        android:layout_width="fill_parent"
+        android:layout_width="0dip"
         android:layout_height="wrap_content"
         android:layout_weight="1" >
 
@@ -24,7 +24,7 @@
             android:id="@+id/balloon_item_image"
             android:layout_width="40dip"
             android:layout_height="54dip"
-            android:src="@drawable/icon"
+            android:src="@drawable/profil_default"
             android:paddingTop="10dip"
             android:paddingRight="10dip" />
 
@@ -40,8 +40,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:textColor="@android:color/primary_text_light"
-                android:textSize="16dip" />
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/font_size_menu" />
 
             <TextView
                 android:id="@+id/balloon_item_snippet"

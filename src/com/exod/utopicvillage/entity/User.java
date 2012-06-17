@@ -13,6 +13,7 @@ public class User {
 	private ImageView avatar;
 	private double latitude;
 	private double longitude;
+	private String commentaire;
 	
 	public long getId() {
 		return id;
@@ -58,6 +59,12 @@ public class User {
 	}
 	public void setLongitude(double longitude) {
 		this.longitude = longitude;
+	}
+	public String getCommentaire() {
+		return commentaire;
+	}
+	public void setCommentaire(String commentaire) {
+		this.commentaire = commentaire;
 	}
 	
 }

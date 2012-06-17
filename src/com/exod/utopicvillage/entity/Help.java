@@ -1,6 +1,7 @@
 package com.exod.utopicvillage.entity;
 
 import java.util.Date;
+import java.util.Hashtable;
 
 public class Help {
 	private int id;
@@ -9,6 +10,12 @@ public class Help {
 	private int amount;
 	private User user;
 	private Date date;
+	private Hashtable<String,User>hashVolunteer;
+	private User participant;
+		
+	public Help(){
+		hashVolunteer = new Hashtable<String, User>();
+	}
 	
 	public int getId() {
 		return id;
@@ -46,6 +53,19 @@ public class Help {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	
-	
+	public Hashtable<String, User> getHashVolunteer() {
+		return hashVolunteer;
+	}
+	public void setHashVolunteer(Hashtable<String, User> hashVolunteer) {
+		this.hashVolunteer = hashVolunteer;
+	}
+	public User getParticipant() {
+		return participant;
+	}
+	public void setParticipant(User participant) {
+		this.participant = participant;
+	}
+	public void cleanVolunteer(){
+		this.hashVolunteer = new Hashtable<String, User>();
+	}
 }

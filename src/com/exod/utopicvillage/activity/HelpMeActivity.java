@@ -29,6 +29,10 @@ public class HelpMeActivity extends HeaderActivity{
 		if(labelAmount!=null && !"".equals(labelAmount.getText())){
 			try{
 				help.setAmount(Integer.parseInt(labelAmount.getText()+""));
+				if(help.getAmount()>storage.getUser().getAmount()){
+					//not_enought_money
+					error=true;
+				}
 			}catch (Exception e) {
 				error=true;
 			}

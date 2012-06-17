@@ -2,7 +2,6 @@ package com.exod.utopicvillage.store;
 
 import java.util.Hashtable;
 
-import android.R.integer;
 import android.app.Application;
 
 import com.exod.utopicvillage.entity.Help;

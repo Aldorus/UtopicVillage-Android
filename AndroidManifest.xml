@@ -31,8 +31,8 @@
         <activity android:name=".activity.YourAskingHelpActivity"/>
         <activity android:name=".activity.UnderConstructActivity"/>
         <activity android:name=".activity.ConnectActivity"/>
-        <activity android:name=".activity.DetailYourHelpActivity"/>
         <activity android:name=".activity.DetailHelpActivity"/>
         <activity android:name=".activity.MapForHelpActivity"/>
+        <activity android:name=".activity.MonProfilActivity"/>
     </application>
 </manifest>

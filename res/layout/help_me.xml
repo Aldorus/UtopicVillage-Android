@@ -1,34 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/ContentLinear">    
-    <TextView
-        style="@style/TexteCompact"
-        android:text="@string/desc:"/>
-
-    <EditText
-        android:id="@+id/descField"
-        style="@style/TexteFieldCompact"
-        android:inputType="textMultiLine"
-        android:text="@string/use_hashtags" />
-
-    <LinearLayout 
+    style="@style/ContentLinear">
+    
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    	android:background="@drawable/wrapper_content"
+    	android:orientation="vertical">    
 	    <TextView
-	        style="@style/Texte2Compact"
-	        android:text="@string/amount:"
-	        android:layout_weight="2"/>
+	        android:layout_marginTop="5dip"
+	        style="@style/Titre"
+	        android:text="@string/desc:"/>
+	
 	    <EditText
-	        style="@style/TexteField2Compact"
-	        android:inputType="number"
-	        android:id="@+id/amountField"
-	        android:text=""
-	        android:layout_weight="1"/>
+	        android:id="@+id/descField"
+	        style="@style/TexteField"
+	        android:inputType="textMultiLine"
+	        android:height="80dip"
+			android:hint="@string/use_hashtags"/>
+	
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal">
+		    <TextView
+		        style="@style/Titre"
+		        android:layout_width="match_parent"
+		        android:text="@string/amount:"
+		        android:layout_weight="2"/>
+		    <EditText
+		        style="@style/TexteField"
+		        android:inputType="number"
+		        android:id="@+id/amountField"
+		        android:text=""
+		        android:layout_weight="1"/>
+	    </LinearLayout>
+	</LinearLayout>
+	<LinearLayout 
+	    android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    	android:background="@drawable/wrapper_bottom_content"
+    	android:padding="5dip">
+	    <Button
+	        style="@style/Button"
+	        android:text="@string/ask_help" 
+	        android:onClick="goAskHelp"/>
     </LinearLayout>
-    <Button
-        style="@style/Button"
-        android:text="@string/ask_help" 
-        android:onClick="goAskHelp"/>
-    
 </LinearLayout>

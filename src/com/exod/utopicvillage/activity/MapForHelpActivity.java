@@ -43,7 +43,7 @@ public class MapForHelpActivity extends TabMenuActivity implements OnDoubleTapLi
         User user = utopicVillageApplication.getStorage().getUser();
         GeoPoint centreMap = new GeoPoint((int)(user.getLatitude()*1000000), (int)(user.getLongitude()*1000000));
         mapView = (MapView) findViewById(R.id.map_for_help);
-        mapView.getController().setZoom(5);
+        mapView.getController().setZoom(10);
         mapView.getController().setCenter(centreMap);
         mapView.getController().animateTo(centreMap);
         
@@ -87,7 +87,12 @@ public class MapForHelpActivity extends TabMenuActivity implements OnDoubleTapLi
 		for (Iterator<Help> iterator = colHelp.iterator(); iterator.hasNext();) {
 			Help help = (Help) iterator.next();
 			GeoPoint point = new GeoPoint((int)(help.getUser().getLatitude()*1000000),(int)(help.getUser().getLongitude()*1000000));
-			CustomOverlayItem overlayitem = new CustomOverlayItem(point, getResources().getString(R.string.ask_for)+DateUtil.convertToStringDifDate(help.getDate()), help.getDescritpion(),"http://ia.media-imdb.com/images/M/MV5BMjAyNjk5Njk0MV5BMl5BanBnXkFtZTcwOTA4MjIyMQ@@._V1._SX40_CR0,0,40,54_.jpg");
+			
+			//on split la description dans le cas ou elle est trop longue
+			if(help.getDescritpion()!=null && help.getDescritpion().length()>50){
+				help.setDescritpion(help.getDescritpion().substring(0,50)+" ...");
+			}
+			CustomOverlayItem overlayitem = new CustomOverlayItem(point, getResources().getString(R.string.ask_for)+" "+DateUtil.convertToStringDifDate(help.getDate()), help.getDescritpion(),"http://ia.media-imdb.com/images/M/MV5BMjAyNjk5Njk0MV5BMl5BanBnXkFtZTcwOTA4MjIyMQ@@._V1._SX40_CR0,0,40,54_.jpg");
 			overlayitem.setIdHelp(help.getId());
 			
 			itemizedoverlay.addOverlay(overlayitem);

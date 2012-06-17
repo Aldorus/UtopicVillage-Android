@@ -28,7 +28,7 @@
 	  	    android:background="@drawable/bordered"/>
 	  	
 	  	<LinearLayout
-	        android:layout_width="match_parent"
+	        android:layout_width="0dip"
 	        android:layout_height="wrap_content"
 	        android:orientation="vertical"
 	        android:layout_weight="1">
@@ -48,6 +48,14 @@
 		        android:textColor="@color/text_color_little"
 		        android:text=""
 				android:layout_marginLeft="@dimen/margin_text"/>
+		    <TextView
+	            android:id="@+id/point_reputation"
+			    android:textSize="@dimen/font_size_little"
+		        android:textColor="@color/text_color_little"
+	            android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:text="@string/unknow_fame"
+			    android:layout_marginLeft="@dimen/margin_text"/>
 		</LinearLayout>
 	</LinearLayout>
 
@@ -58,32 +66,16 @@
 	    android:padding="@dimen/padding_content"
 		android:orientation="horizontal">
 	  	<LinearLayout
-		    android:layout_width="match_parent"
-		    android:layout_height="wrap_content"
-		    android:orientation="vertical"
-		    android:layout_weight="5">
-	        <TextView
-	            android:textColor="@color/text_color_header"
-	            android:textSize="@dimen/font_size_menu"
-	            android:id="@+id/nombre_point"
-			    android:layout_width="match_parent"
-			    android:layout_height="wrap_content"
-			    android:text=""/>
-	        <TextView
-	            android:textColor="@color/text_color_header"
-	            android:textSize="@dimen/font_size_little"
-	            android:id="@+id/nombre_volunteer"
-			    android:layout_width="match_parent"
-			    android:layout_height="wrap_content"
-			    android:text=""/>
-		</LinearLayout>
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="1"></LinearLayout>
 	    <Button
-	        android:id="@+id/button_cancel"
 	        style="@style/Button"
 	        android:layout_width="match_parent"
-	        android:text="@string/cancel_help"
-	        android:onClick="goCancel"
-	        android:layout_weight="4"/>
+	        android:layout_marginLeft="2dip"
+	        android:text="@string/payer"
+	        android:onClick="goPayer"
+	        android:layout_weight="1"/>
 		
 	</LinearLayout>
 </LinearLayout>

@@ -17,4 +17,6 @@
     
     <color name="innerWrapper">#eee</color>
     <color name="strokeWrapper">#acacac</color>
+    
+    <color name="stroke_field_focus">#8840a2</color>
 </resources>

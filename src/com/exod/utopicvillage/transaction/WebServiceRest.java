@@ -131,6 +131,20 @@ public class WebServiceRest implements WebServiceInterface{
 			help.setDescritpion(jsonObject.getString("description"));
 			help.setReproducible(false);
 			help.setUser(user);
+			
+			//Set du participant si il existe
+			JSONObject jsonParticipant = jsonObject.getJSONObject("participant");
+			if(jsonParticipant!=null){
+				User participant = new User();
+				participant.setId(jsonParticipant.getLong("id"));
+				participant.setAmount(jsonParticipant.getInt("amount"));
+				participant.setCommentaire(jsonParticipant.getString("commentaire"));
+				participant.setFirstname(jsonParticipant.getString("firstname"));
+				participant.setName(jsonParticipant.getString("name"));
+				participant.setLatitude(jsonParticipant.getDouble("latitude"));
+				participant.setLongitude(jsonParticipant.getDouble("longitude"));
+				help.setParticipant(participant);
+			}
 		} catch (JSONException e) {
 			return null;
 		}
@@ -192,5 +206,51 @@ public class WebServiceRest implements WebServiceInterface{
 	public void toBeVolonteer(Help help){
 		User user = application.getStorage().getUser();
 		callWebService(user.getId()+"/"+help.getId()+"/insertNewVolunteer");
+	}
+	
+	public void deleteHelp(int idHelp){
+		callWebService(idHelp+"/deleteHelp");	
+	}
+	public void reportHelp(int idHelp){
+		callWebService(idHelp+"/reportHelp");	
+	}
+	
+	public Collection<User> getVolunteer(){
+		Collection<User>colVolunteer = new ArrayList<User>();
+		//recuperation de la demande d'aide
+		Help askingHelp = application.getStorage().getAskingHelp();
+		if(askingHelp!=null){
+			String result = callWebService(askingHelp.getId()+"/getVolunteer");
+			try {
+				JSONArray jsonArray = new JSONArray(result);
+				for (int i = 0; i < jsonArray.length(); i++) {
+					JSONObject jsonUser = jsonArray.getJSONObject(i);
+					User volunteer = new User();
+					volunteer.setId(jsonUser.getInt("id"));
+					volunteer.setAmount(jsonUser.getInt("amount"));
+					volunteer.setCommentaire(jsonUser.getString("commentaire"));
+					volunteer.setFirstname(jsonUser.getString("firstname"));
+					volunteer.setName(jsonUser.getString("name"));
+					volunteer.setLatitude(jsonUser.getDouble("latitude"));
+					volunteer.setLongitude(jsonUser.getDouble("longitude"));
+					
+					askingHelp.getHashVolunteer().put(volunteer.getId()+"", volunteer);
+				}
+				
+			} catch (JSONException e) {
+				Log.d("Error","error lors du parsin JONS "+e);
+			}
+		}
+		
+		return colVolunteer;
+	}
+
+	public void insertNewParticipant(int idUser) {
+		callWebService(application.getStorage().getAskingHelp().getId()+"/"+idUser+"/insertParticipant");
+		User participant = application.getStorage().getAskingHelp().getHashVolunteer().get(idUser+"");
+		//suppression des elements de l'application
+		application.getStorage().getAskingHelp().cleanVolunteer();
+		//stockage du nouvel element
+		application.getStorage().getAskingHelp().setParticipant(participant);
 	}
 }

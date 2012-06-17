@@ -24,7 +24,7 @@ public class TabMenuActivity extends HeaderActivity{
 
 	public void goMe(View view){
 		//lors du clique sur le bouton moi
-		Intent intent = new Intent(this,UnderConstructActivity.class);
+		Intent intent = new Intent(this,MonProfilActivity.class);
 		startActivity(intent);
 	}
 }

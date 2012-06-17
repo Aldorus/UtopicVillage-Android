@@ -24,7 +24,6 @@
     <style name="MenuLinear">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        
     </style>
    
     <style name="LinearElementMenu">
@@ -43,54 +42,27 @@
        	<item name="android:padding">@dimen/padding_content</item>
     </style>
     
-    
-    
-    
-    
-   
+    <style name="Titre" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@color/text_color_titre</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/margin_text</item>
+    </style>
     <style name="Texte" parent="@android:style/Widget.TextView">
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/text_color</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">@dimen/margin_text</item>
     </style>
     <style name="TexteField" parent="@android:style/Widget.EditText">
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/font_size_menu</item>
+        <item name="android:textColor">@color/text_color</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">@dimen/margin_text</item>
-    </style>
-    
-    <style name="TexteCompact" parent="@android:style/Widget.TextView">
-        <item name="android:textColor">@color/black</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginLeft">@dimen/margin_text</item>
-        <item name="android:layout_marginRight">@dimen/margin_text</item>
-    </style>
-    <style name="TexteFieldCompact" parent="@android:style/Widget.EditText">
-        <item name="android:textColor">@color/black</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">90dip</item>
-        <item name="android:layout_marginLeft">@dimen/margin_text</item>
-        <item name="android:layout_marginRight">@dimen/margin_text</item>
-        <item name="android:layout_marginTop">@dimen/margin_button_high</item>
-    </style>
-    
-    <style name="Texte2Compact" parent="@android:style/Widget.TextView">
-        <item name="android:textColor">@color/black</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginLeft">@dimen/margin_text</item>
-        <item name="android:layout_marginRight">@dimen/margin_text</item>
-    </style>
-    <style name="TexteField2Compact" parent="@android:style/Widget.EditText">
-        <item name="android:textColor">@color/black</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginLeft">@dimen/margin_text</item>
-        <item name="android:layout_marginRight">@dimen/margin_text</item>
-        <item name="android:layout_marginTop">@dimen/margin_button_high</item>
+        <item name="android:background">@drawable/field_state</item>
+        <item name="android:padding">@dimen/padding_button</item>
+        <item name="android:gravity">top</item>
     </style>
     
     
@@ -103,6 +75,7 @@
 <!--         <item name="android:layout_marginLeft">@dimen/margin_button_side</item> -->
         <item name="android:padding">@dimen/padding_button</item>
         <item name="android:textColor">@color/text_color_button</item>
+        <item name="android:textSize">@dimen/font_size_menu</item>
     </style>
     <style name="TexteForButton" parent="@android:style/Widget.TextView">
         <item name="android:layout_width">match_parent</item>
