@@ -13,10 +13,14 @@ public class Storage extends Application{
 	User user;
 	Help askingHelp;
 	Hashtable<String, Help> anotherHelp;
+	Hashtable<String, Help> helpYouReVolunteer;
+	Hashtable<String, Help> helpYouReParticipate;
 	
 	public Storage(){
 		user = new User();
 		anotherHelp = new Hashtable<String, Help>();
+		helpYouReParticipate = new Hashtable<String, Help>();
+		helpYouReParticipate = new Hashtable<String, Help>();
 	}
 	
 	public User getUser() {
@@ -46,7 +50,28 @@ public class Storage extends Application{
 	public void addHelpToHashtable(Help help){
 		anotherHelp.put(help.getId()+"", help);
 	}
+
+	public Hashtable<String, Help> getHelpYouReParticipate() {
+		return helpYouReParticipate;
+	}
+
+	public void setHelpYouReParticipate(Hashtable<String, Help> helpYouReParticipate) {
+		this.helpYouReParticipate = helpYouReParticipate;
+	}
+
+	public void addHelpToBeParticipant(Help help){
+		helpYouReParticipate.put(help.getId()+"", help);
+	}
+
+	public Hashtable<String, Help> getHelpYouReVolunteer() {
+		return helpYouReVolunteer;
+	}
+
+	public void setHelpYouReVolunteer(Hashtable<String, Help> helpYouReVolunteer) {
+		this.helpYouReVolunteer = helpYouReVolunteer;
+	}
 	
-	
-	
+	public void addHelpToBeVolunteer(Help help){
+		helpYouReParticipate.put(help.getId()+"", help);
+	}
 }

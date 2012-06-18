@@ -11,8 +11,7 @@
         android:id="@+id/your_help_message"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:background="@drawable/balloon_overlay_unfocused"
-        android:padding="10dip">
+        android:background="@drawable/balloon_overlay_unfocused">
     </LinearLayout>
     <Button
         android:id="@+id/bouton_new_help"

@@ -1,8 +1,13 @@
 package com.exod.utopicvillage.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -59,5 +64,39 @@ public class MasterActivity extends MapActivity{
 	protected boolean isRouteDisplayed() {
 		return false;
 	}
-
+	
+	//Gestion des evenements
+	
+	//Gestion des touches spé android.
+	//menu option
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.menu_option, menu);
+	    return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle item selection
+	    switch (item.getItemId()) {
+	    case R.id.logout:
+	        Intent intent = new Intent(this,ConnectActivity.class);
+	        utopicVillageApplication.setStorage(new Storage());
+	        startActivity(intent);
+	    	return true;
+	    case R.id.me:
+	        Intent intent2 = new Intent(this,MonProfilActivity.class);
+	        startActivity(intent2);
+	    	return true;
+	    default:
+	    	return true;
+	    }
+	}
+	
+	//menu recherche
+	@Override
+	public boolean onSearchRequested(){
+		Log.d("Log","opopop");
+		return true;
+	}
 }

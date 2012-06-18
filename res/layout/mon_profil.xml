@@ -1,15 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/profil_default"
-		android:background="@drawable/bordered"
-		android:contentDescription="@string/avatar"/>
-
-</LinearLayout>
+    android:layout_height="wrap_content">
+	<LinearLayout 
+	    style="@style/ContentLinear" >
+	
+	    
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	    	android:background="@drawable/wrapper_content"
+	    	android:orientation="horizontal">  
+		    <ImageView
+		        android:id="@+id/imageView1"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/profil_default"
+				android:background="@drawable/bordered"
+				android:layout_margin="5dip"
+				android:contentDescription="@string/avatar"/>
+		    
+		    <LinearLayout 
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="vertical">
+			    <EditText
+			        android:id="@+id/name"
+			        style="@style/TexteField"
+			        android:inputType="number"
+			        android:layout_margin="@dimen/margin_text"
+			        android:layout_weight="1"/>
+			    <EditText
+			        android:id="@+id/firstname"
+			        style="@style/TexteField"
+			        android:inputType="number"
+			        android:layout_margin="@dimen/margin_text"
+			        android:layout_weight="1"/>
+			    <EditText
+			        android:id="@+id/email"
+			        style="@style/TexteField"
+			        android:inputType="number"
+			        android:layout_margin="@dimen/margin_text"
+			        android:layout_weight="1"/>
+			    <EditText
+			        android:id="@+id/desc"
+			        style="@style/TexteField"
+			        android:inputType="textMultiLine"
+			        android:layout_margin="@dimen/margin_text"
+			        android:height="80dip"/>
+		   	</LinearLayout>
+		</LinearLayout>
+		<LinearLayout 
+		    android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	    	android:background="@drawable/wrapper_bottom_content"
+	    	android:padding="5dip"
+	    	android:orientation="horizontal">
+		    <LinearLayout 
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:orientation="vertical">
+		        <Button
+			        style="@style/Button"
+			        android:text="@string/ask_help"
+			        android:layout_marginRight="2dip"
+			        android:layout_marginBottom="4dip" 
+			        android:onClick=""/>
+		        <Button
+			        style="@style/Button"
+			        android:text="@string/ask_help" 
+			        android:layout_marginRight="2dip"
+			        android:layout_marginBottom="4dip"
+			        android:onClick=""/>
+		        <Button
+			        style="@style/Button"
+			        android:text="@string/ask_help" 
+			        android:layout_marginRight="2dip"
+			        android:onClick=""/>
+		        
+		    </LinearLayout>
+		    <LinearLayout 
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:orientation="vertical">
+		        <Button
+			        style="@style/Button"
+			        android:text="@string/ask_help" 
+			        android:layout_marginLeft="2dip"
+			        android:layout_marginBottom="4dip"
+			        android:onClick=""/>
+		        <Button
+			        style="@style/Button"
+			        android:text="@string/ask_help" 
+			        android:layout_marginLeft="2dip"
+			        android:layout_marginBottom="4dip"
+			        android:onClick=""/>
+		        <Button
+			        style="@style/Button"
+			        android:text="@string/ask_help" 
+			        android:layout_marginLeft="2dip"
+			        android:onClick=""/>
+		        
+		    </LinearLayout>
+		</LinearLayout>
+	</LinearLayout>
+</ScrollView>

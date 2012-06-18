@@ -16,4 +16,7 @@ public interface WebServiceInterface {
 	abstract void reportHelp(int idHelp);
 	abstract Collection<User> getVolunteer();
 	abstract void insertNewParticipant(int idUser);
+	abstract void payerAskingHelp();
+	abstract void helpWhereYouParticipant();
+	abstract void helpWhereYouVolunteer();
 }

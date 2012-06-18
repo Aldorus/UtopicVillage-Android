@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.exod.utopicvillage.R;
 import com.exod.utopicvillage.adaptater.VolunteerAdapter;
@@ -33,7 +34,6 @@ public class YourAskingHelpActivity extends TabMenuActivity{
 	}
 	
 	public void goAskHelp(View view){
-		//TODO
 		Intent intent = new Intent(this,HelpMeActivity.class);
 		startActivity(intent);
 	}
@@ -41,6 +41,7 @@ public class YourAskingHelpActivity extends TabMenuActivity{
 	private void getYourAskingHelp(){
 		//we get the information from the webservice
 		help = webService.yourAskingHelp();
+		Log.d("TAG","aagaa"+help);
 		//on sauvegarde cette aide
 		utopicVillageApplication.getStorage().setAskingHelp(help);
 			
@@ -177,7 +178,6 @@ public class YourAskingHelpActivity extends TabMenuActivity{
 	}
 	
 	private void setTheParticipant(){
-		
 		//TODO
 		//envoi de la notification
 		
@@ -199,5 +199,26 @@ public class YourAskingHelpActivity extends TabMenuActivity{
 		text.setText(participant.getName()+" "+participant.getFirstname());
 		sousText.setText(participant.getCommentaire());
 		pointReputation.setText("0");
+	}
+	
+	public void goPayer(View view){
+		//on valide le payement entre les deux joueurs
+		User user = storage.getUser();
+		user.setAmount(user.getAmount()-storage.getAskingHelp().getAmount());
+		
+		//on l'envoi au webService pour mise a jour de la base
+		webService.payerAskingHelp();
+		
+		//on clean le storage
+		storage.setAskingHelp(null);
+		
+		//on affiche un message dans un toast pour signaler a l'utilisateur que ça demande a bien été prise en compte
+		CharSequence text = getResources().getString(R.string.payement_done);
+		int duration = Toast.LENGTH_SHORT;
+		Toast toast = Toast.makeText(getApplicationContext(), text, duration);
+		toast.show();
+		
+		Intent intent = new Intent(this,YourAskingHelpActivity.class);
+		startActivity(intent);
 	}
 }

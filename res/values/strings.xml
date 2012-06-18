@@ -50,4 +50,6 @@
     <string name="unknow_fame">Reputation : Inconnue</string>
     <string name="payer">Payer</string>
     <string name="not_enought_money">Vous n\'avez pas assez d\'argent</string>
+    <string name="log_out">Déconnexion</string>
+    <string name="payement_done">Le payement pour cette aide a été effectué</string>
 </resources>

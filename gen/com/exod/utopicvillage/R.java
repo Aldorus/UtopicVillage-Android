@@ -74,42 +74,48 @@ public final class R {
         public static final int wrapper_top_content=0x7f02001d;
     }
     public static final class id {
-        public static final int amountField=0x7f080014;
-        public static final int amountHelp=0x7f08000d;
-        public static final int avatar=0x7f080010;
-        public static final int balloon_close=0x7f080006;
-        public static final int balloon_disclosure=0x7f080005;
-        public static final int balloon_inner_layout=0x7f080001;
-        public static final int balloon_item_image=0x7f080002;
-        public static final int balloon_item_snippet=0x7f080004;
-        public static final int balloon_item_title=0x7f080003;
-        public static final int balloon_main_layout=0x7f080000;
-        public static final int bouton_new_help=0x7f080020;
-        public static final int button_cancel=0x7f080019;
-        public static final int button_show_on_map=0x7f08000e;
-        public static final int button_volunteer=0x7f08000f;
-        public static final int descField=0x7f080013;
-        public static final int emailField=0x7f080008;
-        public static final int idCell=0x7f08000a;
-        public static final int id_see_detail=0x7f08001c;
-        public static final int id_take_volunteer=0x7f08001b;
-        public static final int imageView1=0x7f080007;
-        public static final int label_amount=0x7f080012;
-        public static final int label_user=0x7f080011;
-        public static final int label_volunteer=0x7f080021;
-        public static final int list_view_user=0x7f080023;
-        public static final int main_linear=0x7f080015;
-        public static final int map_for_help=0x7f080016;
-        public static final int nombre_point=0x7f080017;
-        public static final int nombre_volunteer=0x7f080018;
-        public static final int passwordField=0x7f080009;
-        public static final int point_reputation=0x7f08001a;
-        public static final int sousTextCell=0x7f08000c;
-        public static final int textCell=0x7f08000b;
-        public static final int textView1=0x7f08001d;
-        public static final int your_asking_help=0x7f08001e;
-        public static final int your_help_message=0x7f08001f;
-        public static final int your_participant=0x7f080022;
+        public static final int amountField=0x7f090014;
+        public static final int amountHelp=0x7f09000d;
+        public static final int avatar=0x7f090010;
+        public static final int balloon_close=0x7f090006;
+        public static final int balloon_disclosure=0x7f090005;
+        public static final int balloon_inner_layout=0x7f090001;
+        public static final int balloon_item_image=0x7f090002;
+        public static final int balloon_item_snippet=0x7f090004;
+        public static final int balloon_item_title=0x7f090003;
+        public static final int balloon_main_layout=0x7f090000;
+        public static final int bouton_new_help=0x7f090024;
+        public static final int button_cancel=0x7f09001d;
+        public static final int button_show_on_map=0x7f09000e;
+        public static final int button_volunteer=0x7f09000f;
+        public static final int desc=0x7f09001a;
+        public static final int descField=0x7f090013;
+        public static final int email=0x7f090019;
+        public static final int emailField=0x7f090008;
+        public static final int firstname=0x7f090018;
+        public static final int idCell=0x7f09000a;
+        public static final int id_see_detail=0x7f090020;
+        public static final int id_take_volunteer=0x7f09001f;
+        public static final int imageView1=0x7f090007;
+        public static final int label_amount=0x7f090012;
+        public static final int label_user=0x7f090011;
+        public static final int label_volunteer=0x7f090025;
+        public static final int list_view_user=0x7f090027;
+        public static final int logout=0x7f090029;
+        public static final int main_linear=0x7f090015;
+        public static final int map_for_help=0x7f090016;
+        public static final int me=0x7f090028;
+        public static final int name=0x7f090017;
+        public static final int nombre_point=0x7f09001b;
+        public static final int nombre_volunteer=0x7f09001c;
+        public static final int passwordField=0x7f090009;
+        public static final int point_reputation=0x7f09001e;
+        public static final int sousTextCell=0x7f09000c;
+        public static final int textCell=0x7f09000b;
+        public static final int textView1=0x7f090021;
+        public static final int your_asking_help=0x7f090022;
+        public static final int your_help_message=0x7f090023;
+        public static final int your_participant=0x7f090026;
     }
     public static final class layout {
         public static final int balloon_overlay_example2=0x7f030000;
@@ -127,6 +133,9 @@ public final class R {
         public static final int splatch=0x7f03000c;
         public static final int under_construct=0x7f03000d;
         public static final int your_asking_help=0x7f03000e;
+    }
+    public static final class menu {
+        public static final int menu_option=0x7f080000;
     }
     public static final class string {
         public static final int Woops=0x7f06000b;
@@ -151,6 +160,7 @@ public final class R {
         public static final int help=0x7f060012;
         public static final int label_participant=0x7f06002b;
         public static final int label_volunteer=0x7f06002a;
+        public static final int log_out=0x7f060030;
         public static final int logoExod=0x7f060014;
         public static final int logoUtopic=0x7f060015;
         public static final int menu_helpme=0x7f060002;
@@ -159,6 +169,7 @@ public final class R {
         public static final int no_helpQ=0x7f060017;
         public static final int not_enought_money=0x7f06002f;
         public static final int password_=0x7f060006;
+        public static final int payement_done=0x7f060031;
         public static final int payer=0x7f06002e;
         public static final int point=0x7f060026;
         public static final int puce=0x7f060016;
@@ -188,6 +199,8 @@ public final class R {
         public static final int MaimLinear=0x7f070000;
         public static final int MenuLinear=0x7f070003;
         public static final int TextHeaderActivity=0x7f070001;
+        /**          <item name="android:layout_margin">@dimen/margin_text</item> 
+         */
         public static final int Texte=0x7f070007;
         public static final int TexteField=0x7f070008;
         public static final int TexteForButton=0x7f07000a;

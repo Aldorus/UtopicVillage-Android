@@ -37,6 +37,11 @@ public class DetailHelpActivity extends HeaderActivity{
 			titreHelp.setText(getResources().getString(R.string.ask_for)+" "+DateUtil.convertToStringDifDate(help.getDate()));
 			descHelp.setText(help.getDescritpion());
 			amountHelp.setText(help.getAmount()+" "+getResources().getString(R.string.point));
+			
+			//on test si l'on est deja volontaire pour cette aide
+			if(storage.getHelpYouReParticipate().get(help.getId())!=null){
+				disabledButton();
+			}
 		}else{
 			//TODO error message
 		}
@@ -57,7 +62,8 @@ public class DetailHelpActivity extends HeaderActivity{
 	public void goToBeVolunteer(View view){
 		//on requete le webservice pour devenir volontiare
 		webService.toBeVolonteer(help);
-		
+		//on l'ajoute à la hashtable du storage
+		storage.addHelpToBeVolunteer(help);
 		//on desactive le bouton
 		disabledButton();
 		
@@ -71,8 +77,9 @@ public class DetailHelpActivity extends HeaderActivity{
 	public void disabledButton(){
 		//on change le bouton
 		Button button = (Button)findViewById(R.id.button_volunteer);
+		button.setClickable(false);
 		button.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_disabled));
-				
+		button.setText(getResources().getString(R.string.already_volonteer));		
 	}
 	
 	public void goReportHelp(View view){

@@ -1,43 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/ContentLinear">
-
-    <ImageView
-        android:contentDescription="@string/logoUtopic"
-        android:id="@+id/imageView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="00dip"
-        android:src="@drawable/logo_utopic"/>
-
-    <TextView
-        style="@style/Texte"
-        android:text="@string/email:"/>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     
-    <EditText
-        style="@style/TexteField"
-        android:inputType="text"
-        android:id="@+id/emailField"
-        android:text="rousselguillaume2@hotmail.fr"/>
-
-    <TextView
-        style="@style/Texte"
-        android:text="@string/password:"/>
-    
-    <EditText
-        style="@style/TexteField"
-        android:inputType="textPassword"
-        android:id="@+id/passwordField"
-        android:text="123"/>
-     
-    <Button
-        style="@style/Button"
-        android:text="@string/connect"
-        android:onClick="goConnect"/>
-     
-    <Button
-        style="@style/Button"
-        android:text="@string/register" 
-        android:onClick="goRegister"/>
-     
-</LinearLayout>
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    style="@style/ContentLinear">
+	
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="300dip"
+	        android:gravity="center">
+		    <ImageView
+		        android:contentDescription="@string/logoUtopic"
+		        android:id="@+id/imageView1"
+		        android:layout_width="136dip"
+		        android:layout_height="88dip"
+		        android:layout_marginTop="00dip"
+		        android:src="@drawable/logo_utopic"/>
+		</LinearLayout>
+	    <TextView
+	        style="@style/Texte"
+	        android:text="@string/email:"
+	        android:layout_marginBottom="3dip"/>
+	    
+	    <EditText
+	        style="@style/TexteField"
+	        android:inputType="text"
+	        android:id="@+id/emailField"
+	        android:layout_marginBottom="3dip"
+	        android:text="rousselguillaume2@hotmail.fr"/>
+	
+	    <TextView
+	        style="@style/Texte"
+	        android:layout_marginBottom="3dip"
+	        android:text="@string/password:"/>
+	    
+	    <EditText
+	        style="@style/TexteField"
+	        android:inputType="textPassword"
+	        android:id="@+id/passwordField"
+	        android:layout_marginBottom="3dip"
+	        android:text="123"/>
+	     
+	    <Button
+	        style="@style/Button"
+	        android:text="@string/connect"
+	        android:layout_marginBottom="5dip"
+	        android:onClick="goConnect"/>
+	     
+	    <Button
+	        style="@style/Button"
+	        android:text="@string/register" 
+	        android:onClick="goRegister"/>
+	</LinearLayout>
+</ScrollView>

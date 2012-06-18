@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -20,8 +19,13 @@ public class ConnectActivity extends MasterActivity{
 		//on fait appel au webService de test de connection 
 		String email = (String)((EditText)findViewById(R.id.emailField)).getText().toString();
 		String password = (String)((EditText)findViewById(R.id.passwordField)).getText().toString();
-		Log.d("testConnect","email : "+email+" password :"+password);
 		if(webService.testConnect(email, password)){
+			
+			//on cherche les demandes d'aide ou on est participant
+			webService.helpWhereYouParticipant();
+			//on cherche les demandes d'aide ou on est volontaire
+			webService.helpWhereYouVolunteer();
+			
 			Intent intent= new Intent(this,YourAskingHelpActivity.class	);
 			startActivity(intent);
 			finish();
