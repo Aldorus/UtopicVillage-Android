@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/ContentLinear">
+    style="@style/ContentLinear"
+    android:id="@+id/main_content">
     
     <LinearLayout 
         android:id="@+id/your_asking_help"

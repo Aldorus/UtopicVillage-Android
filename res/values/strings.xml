@@ -41,8 +41,8 @@
     <string name="be_volunteer">Participer</string>
     <string name="for_many">Pour </string>
     <string name="point">points</string>
-    <string name="report_help"><u>Signaler cette annonce</u></string>
-    <string name="reported_help">Vous avez signalé cette annonce</string>
+    <string name="report_help"><u>Signaler cette demande</u></string>
+    <string name="reported_help">Vous avez signalé cette demande</string>
     <string name="take_this_volunteer">Prendre ce volontaire</string>
     <string name="label_volunteer">Volontaires : </string>
     <string name="label_participant">Participant : </string>
@@ -52,4 +52,6 @@
     <string name="not_enought_money">Vous n\'avez pas assez d\'argent</string>
     <string name="log_out">Déconnexion</string>
     <string name="payement_done">Le payement pour cette aide a été effectué</string>
+    <string name="accept_your_hand">a accepté la main que vous lui tendiez</string>
+    <string name="you_are_payed">Vous avez été payé par</string>
 </resources>

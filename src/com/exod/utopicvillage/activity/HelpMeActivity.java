@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.exod.utopicvillage.R;
+import com.exod.utopicvillage.asynchrone.InsertHelpAsync;
 import com.exod.utopicvillage.entity.Help;
 
 public class HelpMeActivity extends HeaderActivity{
@@ -43,13 +44,27 @@ public class HelpMeActivity extends HeaderActivity{
 		help.setUser(storage.getUser());
 		
 		if(!error){
-			webService.insertHelp(help);
-			//redirection
-			Intent intent = new Intent(this,YourAskingHelpActivity.class);
-			startActivity(intent);
+			
+			///asynchrone 
+			InsertHelpAsync helpAsync = new InsertHelpAsync(help, this);
+			helpAsync.execute();
 			
 		}else{
 			//alert error
+			Builder alertBuilder = new AlertDialog.Builder(this);
+			alertBuilder.setMessage(getResources().getString(R.string.error_information));
+			alertBuilder.setNeutralButton(getResources().getString(R.string.close), null);
+			alertBuilder.setTitle(getResources().getString(R.string.Woops));
+			alertBuilder.create().show();
+		}
+	}
+	
+	public void callbackAsync(Boolean result){
+		if(result){
+			//redirection
+			Intent intent = new Intent(this,YourAskingHelpActivity.class);
+			startActivity(intent);
+		}else{
 			Builder alertBuilder = new AlertDialog.Builder(this);
 			alertBuilder.setMessage(getResources().getString(R.string.error_information));
 			alertBuilder.setNeutralButton(getResources().getString(R.string.close), null);

@@ -61,22 +61,23 @@ public final class R {
         public static final int header=0x7f020010;
         public static final int header_background=0x7f020011;
         public static final int ic_launcher=0x7f020012;
-        public static final int icon=0x7f020013;
-        public static final int logo_utopic=0x7f020014;
-        public static final int marker=0x7f020015;
-        public static final int marker2=0x7f020016;
-        public static final int profil_default=0x7f020017;
-        public static final int puce_right=0x7f020018;
-        public static final int wrapper_bottom_content=0x7f020019;
-        public static final int wrapper_bottom_content_without_angle=0x7f02001a;
-        public static final int wrapper_content=0x7f02001b;
-        public static final int wrapper_content_without_angle=0x7f02001c;
-        public static final int wrapper_top_content=0x7f02001d;
+        public static final int ic_launcher_utopic=0x7f020013;
+        public static final int icon=0x7f020014;
+        public static final int logo_utopic=0x7f020015;
+        public static final int marker=0x7f020016;
+        public static final int marker2=0x7f020017;
+        public static final int profil_default=0x7f020018;
+        public static final int puce_right=0x7f020019;
+        public static final int wrapper_bottom_content=0x7f02001a;
+        public static final int wrapper_bottom_content_without_angle=0x7f02001b;
+        public static final int wrapper_content=0x7f02001c;
+        public static final int wrapper_content_without_angle=0x7f02001d;
+        public static final int wrapper_top_content=0x7f02001e;
     }
     public static final class id {
-        public static final int amountField=0x7f090014;
-        public static final int amountHelp=0x7f09000d;
-        public static final int avatar=0x7f090010;
+        public static final int amountField=0x7f090015;
+        public static final int amountHelp=0x7f09000e;
+        public static final int avatar=0x7f090011;
         public static final int balloon_close=0x7f090006;
         public static final int balloon_disclosure=0x7f090005;
         public static final int balloon_inner_layout=0x7f090001;
@@ -84,38 +85,44 @@ public final class R {
         public static final int balloon_item_snippet=0x7f090004;
         public static final int balloon_item_title=0x7f090003;
         public static final int balloon_main_layout=0x7f090000;
-        public static final int bouton_new_help=0x7f090024;
-        public static final int button_cancel=0x7f09001d;
-        public static final int button_show_on_map=0x7f09000e;
-        public static final int button_volunteer=0x7f09000f;
-        public static final int desc=0x7f09001a;
-        public static final int descField=0x7f090013;
-        public static final int email=0x7f090019;
-        public static final int emailField=0x7f090008;
-        public static final int firstname=0x7f090018;
-        public static final int idCell=0x7f09000a;
-        public static final int id_see_detail=0x7f090020;
-        public static final int id_take_volunteer=0x7f09001f;
-        public static final int imageView1=0x7f090007;
-        public static final int label_amount=0x7f090012;
-        public static final int label_user=0x7f090011;
-        public static final int label_volunteer=0x7f090025;
-        public static final int list_view_user=0x7f090027;
-        public static final int logout=0x7f090029;
-        public static final int main_linear=0x7f090015;
-        public static final int map_for_help=0x7f090016;
-        public static final int me=0x7f090028;
-        public static final int name=0x7f090017;
-        public static final int nombre_point=0x7f09001b;
-        public static final int nombre_volunteer=0x7f09001c;
-        public static final int passwordField=0x7f090009;
-        public static final int point_reputation=0x7f09001e;
-        public static final int sousTextCell=0x7f09000c;
-        public static final int textCell=0x7f09000b;
-        public static final int textView1=0x7f090021;
-        public static final int your_asking_help=0x7f090022;
-        public static final int your_help_message=0x7f090023;
-        public static final int your_participant=0x7f090026;
+        public static final int bouton_new_help=0x7f09002a;
+        public static final int button_cancel=0x7f090021;
+        public static final int button_show_on_map=0x7f09000f;
+        public static final int button_volunteer=0x7f090010;
+        public static final int desc=0x7f09001e;
+        public static final int descField=0x7f090014;
+        public static final int element_menu_helpme=0x7f090018;
+        public static final int element_menu_me=0x7f09001a;
+        public static final int element_menu_volunteer=0x7f090019;
+        public static final int email=0x7f09001d;
+        public static final int emailField=0x7f090009;
+        public static final int firstname=0x7f09001c;
+        public static final int idCell=0x7f09000b;
+        public static final int id_see_detail=0x7f090024;
+        public static final int id_take_volunteer=0x7f090023;
+        public static final int imageView1=0x7f090008;
+        public static final int label_amount=0x7f090013;
+        public static final int label_user=0x7f090012;
+        public static final int label_volunteer=0x7f09002b;
+        public static final int list_view_user=0x7f09002d;
+        public static final int logout=0x7f09002f;
+        public static final int main_content=0x7f090007;
+        public static final int main_linear=0x7f090016;
+        public static final int main_spinner=0x7f090025;
+        public static final int map_for_help=0x7f090017;
+        public static final int me=0x7f09002e;
+        public static final int name=0x7f09001b;
+        public static final int nombre_point=0x7f09001f;
+        public static final int nombre_volunteer=0x7f090020;
+        public static final int passwordField=0x7f09000a;
+        public static final int point_reputation=0x7f090022;
+        public static final int progressBar1=0x7f090026;
+        public static final int sousTextCell=0x7f09000d;
+        public static final int textCell=0x7f09000c;
+        public static final int textView1=0x7f090027;
+        public static final int your_asking_help=0x7f090028;
+        public static final int your_help_message=0x7f090029;
+        public static final int your_participant=0x7f09002c;
     }
     public static final class layout {
         public static final int balloon_overlay_example2=0x7f030000;
@@ -130,15 +137,17 @@ public final class R {
         public static final int row_for_asking_help=0x7f030009;
         public static final int row_for_particiapnt=0x7f03000a;
         public static final int row_for_user=0x7f03000b;
-        public static final int splatch=0x7f03000c;
-        public static final int under_construct=0x7f03000d;
-        public static final int your_asking_help=0x7f03000e;
+        public static final int spinner=0x7f03000c;
+        public static final int splatch=0x7f03000d;
+        public static final int under_construct=0x7f03000e;
+        public static final int your_asking_help=0x7f03000f;
     }
     public static final class menu {
         public static final int menu_option=0x7f080000;
     }
     public static final class string {
         public static final int Woops=0x7f06000b;
+        public static final int accept_your_hand=0x7f060032;
         public static final int already_volonteer=0x7f06001f;
         public static final int amount_=0x7f060010;
         public static final int app_name=0x7f060000;
@@ -187,6 +196,7 @@ public final class R {
         public static final int volunteer=0x7f06001d;
         public static final int volunteers=0x7f06001e;
         public static final int wrongConnect=0x7f060009;
+        public static final int you_are_payed=0x7f060033;
         public static final int you_re_volunteer=0x7f060020;
     }
     public static final class style {

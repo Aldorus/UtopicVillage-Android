@@ -4,18 +4,16 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.GestureDetector.OnDoubleTapListener;
 import android.view.MotionEvent;
 
 import com.exod.utopicvillage.R;
+import com.exod.utopicvillage.asynchrone.GetNearAskingHelpAsync;
 import com.exod.utopicvillage.entity.Help;
 import com.exod.utopicvillage.entity.User;
-import com.exod.utopicvillage.listener.PositionListener;
 import com.exod.utopicvillage.overlay.CustomOverlayItem;
 import com.exod.utopicvillage.overlay.MapHelpOverlay;
 import com.exod.utopicvillage.util.DateUtil;
@@ -28,17 +26,7 @@ public class MapForHelpActivity extends TabMenuActivity implements OnDoubleTapLi
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState,R.layout.map_help);
-		
-		
-		//on set le location manager
-		//TODO
-		//asynch task
-		LocationManager objgps = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-        PositionListener positionListener = new PositionListener();
-        //on lui permet d'utiliser les element de l'application
-        positionListener.setWebService(utopicVillageApplication);
-        objgps.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, positionListener);
-        
+		        
         //on centre la carte sur la position courante
         User user = utopicVillageApplication.getStorage().getUser();
         GeoPoint centreMap = new GeoPoint((int)(user.getLatitude()*1000000), (int)(user.getLongitude()*1000000));
@@ -79,11 +67,18 @@ public class MapForHelpActivity extends TabMenuActivity implements OnDoubleTapLi
 	}
 
 	public void displayOverlays(){
+		
+		//appel asynchrone
+		GetNearAskingHelpAsync nearAskingAsync = new GetNearAskingHelpAsync(this);
+		nearAskingAsync.execute();
+		
+	}
+	
+	public void displayPin(Collection<Help>colHelp){
 		List<Overlay> mapOverlays = mapView.getOverlays();
 		Drawable drawable = this.getResources().getDrawable(R.drawable.marker);
 		MapHelpOverlay<CustomOverlayItem> itemizedoverlay = new MapHelpOverlay<CustomOverlayItem>(drawable, this);
 		
-		Collection<Help> colHelp = webService.getNearAskingHelp();
 		for (Iterator<Help> iterator = colHelp.iterator(); iterator.hasNext();) {
 			Help help = (Help) iterator.next();
 			GeoPoint point = new GeoPoint((int)(help.getUser().getLatitude()*1000000),(int)(help.getUser().getLongitude()*1000000));

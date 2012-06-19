@@ -6,7 +6,7 @@ import com.exod.utopicvillage.R;
 
 public class User {
 	//classe de descritpion d'un user
-	private long id;
+	private int id;
 	private String name;
 	private String firstname;
 	private int amount;
@@ -15,10 +15,10 @@ public class User {
 	private double longitude;
 	private String commentaire;
 	
-	public long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getName() {

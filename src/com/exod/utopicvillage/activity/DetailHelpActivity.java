@@ -10,6 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.exod.utopicvillage.R;
+import com.exod.utopicvillage.asynchrone.ReportHelpAsync;
+import com.exod.utopicvillage.asynchrone.ToBeVolunteerAsync;
 import com.exod.utopicvillage.entity.Help;
 import com.exod.utopicvillage.store.Storage;
 import com.exod.utopicvillage.util.DateUtil;
@@ -60,13 +62,17 @@ public class DetailHelpActivity extends HeaderActivity{
 	}
 	
 	public void goToBeVolunteer(View view){
-		//on requete le webservice pour devenir volontiare
-		webService.toBeVolonteer(help);
-		//on l'ajoute à la hashtable du storage
-		storage.addHelpToBeVolunteer(help);
 		//on desactive le bouton
 		disabledButton();
-		
+
+		//on requete le webservice pour devenir volontiare
+		ToBeVolunteerAsync async = new ToBeVolunteerAsync(this, help);
+		async.execute();
+	}
+	
+	public void callbackVolunteer(){
+		//on l'ajoute à la hashtable du storage
+		storage.addHelpToBeVolunteer(help);
 		//on affiche un message dans un toast pour signaler a l'utilisateur que ça demande a bien été prise en compte
 		CharSequence text = getResources().getString(R.string.you_re_volunteer);
 		int duration = Toast.LENGTH_SHORT;
@@ -83,8 +89,13 @@ public class DetailHelpActivity extends HeaderActivity{
 	}
 	
 	public void goReportHelp(View view){
-		//on fait la requete au webservice
-		webService.reportHelp(help.getId());
+		//requete asynchrone
+		ReportHelpAsync async = new ReportHelpAsync(this);
+		async.execute(help.getId());
+	}
+	
+	public void callBackReport(){
+
 		CharSequence text = getResources().getString(R.string.reported_help);
 		int duration = Toast.LENGTH_SHORT;
 		Toast toast = Toast.makeText(getApplicationContext(), text, duration);

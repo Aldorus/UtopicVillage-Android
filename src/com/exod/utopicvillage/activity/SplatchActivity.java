@@ -2,50 +2,45 @@ package com.exod.utopicvillage.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 
 import com.exod.utopicvillage.R;
 
 public class SplatchActivity extends MasterActivity {
-	protected int _splashTime = 1000; // time to display the splash screen in ms
-	private Thread mSplashThread; 
+	protected int SPLASHTIME  = 1000; // time to display the splash screen in ms
+	private static final int STOPSPLASH = 0;
+	
+	private Handler splashHandler = new Handler() {
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+				case STOPSPLASH:
+			//remove SplashScreen from view
+			// Run next activity
+        
+	        if(storage.getUser().getName()==null){
+	        	Intent intent = new Intent(getApplicationContext(), ConnectActivity.class);
+	        	startActivity(intent);
+	        	finish();
+	        }else{
+	        	Intent intent = new Intent(getApplicationContext(), YourAskingHelpActivity.class);
+	        	startActivity(intent);
+	        	finish();
+	        	//si il y a déja les inforations on précharge
+	        	//TODO
+	        }
+			break;
+		}
+		super.handleMessage(msg);
+		}
+	};
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState,R.layout.splatch);
-	    
-	    final SplatchActivity sPlashScreen = this;   
-        
-        // The thread to wait for splash screen events
-        mSplashThread =  new Thread(){
-            @Override
-            public void run(){
-                try {
-                    synchronized(this){
-                        // Wait given period of time or exit on touch
-                        wait(_splashTime);
-                    }
-                }
-                catch(InterruptedException ex){                    
-                }
-
-                finish();
-                
-                // Run next activity
-                Intent intent = new Intent();
-                
-                if(storage.getUser().getName()==null){
-                	intent.setClass(sPlashScreen, ConnectActivity.class);
-                }else{
-                	intent.setClass(sPlashScreen, YourAskingHelpActivity.class);
-                	//si il y a déja les inforations on précharge
-                	//TODO
-                }
-                startActivity(intent);
-                stop();
-                finish();
-            }
-        };
-        
-        mSplashThread.start();   
+	    Message msg = new Message();
+	    msg.what = STOPSPLASH;
+	    splashHandler.sendMessageDelayed(msg, SPLASHTIME);
+	       
 	}
 }

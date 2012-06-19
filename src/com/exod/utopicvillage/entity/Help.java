@@ -10,11 +10,11 @@ public class Help {
 	private int amount;
 	private User user;
 	private Date date;
-	private Hashtable<String,User>hashVolunteer;
+	private Hashtable<Integer,User>hashVolunteer;
 	private User participant;
 		
 	public Help(){
-		hashVolunteer = new Hashtable<String, User>();
+		hashVolunteer = new Hashtable<Integer, User>();
 	}
 	
 	public int getId() {
@@ -53,10 +53,10 @@ public class Help {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public Hashtable<String, User> getHashVolunteer() {
+	public Hashtable<Integer, User> getHashVolunteer() {
 		return hashVolunteer;
 	}
-	public void setHashVolunteer(Hashtable<String, User> hashVolunteer) {
+	public void setHashVolunteer(Hashtable<Integer, User> hashVolunteer) {
 		this.hashVolunteer = hashVolunteer;
 	}
 	public User getParticipant() {
@@ -66,6 +66,6 @@ public class Help {
 		this.participant = participant;
 	}
 	public void cleanVolunteer(){
-		this.hashVolunteer = new Hashtable<String, User>();
+		this.hashVolunteer = new Hashtable<Integer, User>();
 	}
 }

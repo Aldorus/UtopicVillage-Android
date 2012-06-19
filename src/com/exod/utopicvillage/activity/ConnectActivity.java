@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.exod.utopicvillage.R;
+import com.exod.utopicvillage.asynchrone.ConnectAsync;
 
 public class ConnectActivity extends MasterActivity{
 	@Override
@@ -19,8 +20,14 @@ public class ConnectActivity extends MasterActivity{
 		//on fait appel au webService de test de connection 
 		String email = (String)((EditText)findViewById(R.id.emailField)).getText().toString();
 		String password = (String)((EditText)findViewById(R.id.passwordField)).getText().toString();
-		if(webService.testConnect(email, password)){
-			
+		//appel asynchrone
+		ConnectAsync connection = new ConnectAsync(this, email, password);
+		connection.execute();
+	}
+	
+	
+	public void callbackAsync(boolean resultAsyncTask){
+		if(resultAsyncTask){
 			//on cherche les demandes d'aide ou on est participant
 			webService.helpWhereYouParticipant();
 			//on cherche les demandes d'aide ou on est volontaire
@@ -35,6 +42,7 @@ public class ConnectActivity extends MasterActivity{
 			alertBuilder.setNeutralButton(getResources().getString(R.string.close), null);
 			alertBuilder.setTitle(getResources().getString(R.string.Woops));
 			alertBuilder.create().show();
+			this.displayData();
 		}
 	}
 	
@@ -43,4 +51,5 @@ public class ConnectActivity extends MasterActivity{
 		Intent intent= new Intent(this,UnderConstructActivity.class	);
 		startActivity(intent);
 	}
+	
 }

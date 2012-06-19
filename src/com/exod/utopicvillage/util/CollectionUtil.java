@@ -9,7 +9,7 @@ import com.exod.utopicvillage.entity.User;
 
 public class CollectionUtil {
 	
-	public static Hashtable<String, Collection<String>> convertHashToHashForUser(Hashtable<String,User>hashVolunteer){
+	public static Hashtable<String, Collection<String>> convertHashToHashForUser(Hashtable<Integer,User>hashVolunteer){
 		Hashtable<String, Collection<String>>hastableUser = new Hashtable<String, Collection<String>>();
 		
 		Collection<String> colId = new ArrayList<String>();
