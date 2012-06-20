@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.exod.utopicvillage.R;
+import com.exod.utopicvillage.util.StringUtil;
 
 public class VolunteerAdapter extends ArrayAdapter<String> {
 	private final Context context;
@@ -34,6 +35,7 @@ public class VolunteerAdapter extends ArrayAdapter<String> {
 		super(context, R.layout.row_for_user, names);
 		this.context = context;
 		this.names = names;
+		
 		this.pointsReputation = pointReputation;
 		this.ids = id;
 		this.descs = desc;
@@ -68,8 +70,8 @@ public class VolunteerAdapter extends ArrayAdapter<String> {
 		
 		holder.id.setText(id);
 		holder.name.setText(name);
-		holder.desc.setText(desc);
-		holder.pointReputation.setText(pointReputation);
+		holder.desc.setText(StringUtil.isNotNullShort(desc));
+		holder.pointReputation.setText(context.getResources().getString(R.string.fame)+" "+pointReputation);
 		holder.seeDetail.setTag(id+"");
 		holder.takeVolonteer.setTag(id+"");
 		//on retourne la cellule complété

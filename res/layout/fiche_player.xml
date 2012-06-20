@@ -31,16 +31,6 @@
 			        android:layout_margin="@dimen/margin_text"
 			        android:layout_weight="1"/>
 			    <TextView
-			        android:id="@+id/firstname"
-			        style="@style/Texte"
-			        android:layout_margin="@dimen/margin_text"
-			        android:layout_weight="1"/>
-			    <TextView
-			        android:id="@+id/email"
-			        style="@style/Texte"
-			        android:layout_margin="@dimen/margin_text"
-			        android:layout_weight="1"/>
-			    <TextView
 			        android:id="@+id/desc"
 			        style="@style/Texte"
 			        android:layout_margin="@dimen/margin_text"/>
@@ -60,21 +50,23 @@
 		        android:orientation="vertical">
 		        <Button
 			        style="@style/Button"
-			        android:text="@string/modif_info"
+			        android:text="@string/position"
 			        android:layout_marginRight="2dip"
-			        android:layout_marginBottom="4dip" 
+			        android:layout_marginBottom="4dip"
+			        android:clickable="false"
+			        android:background="@drawable/button_disabled" 
+			        android:onClick=""/>
+		        <Button
+			        style="@style/Button"
+			        android:text="@string/send_friend_asking"
+			        android:layout_marginRight="2dip"
+			        android:layout_marginBottom="4dip"
+			        android:clickable="false"
+			        android:background="@drawable/button_disabled" 
 			        android:onClick=""/>
 		        <Button
 			        style="@style/Button"
 			        android:text="@string/friends" 
-			        android:layout_marginRight="2dip"
-			        android:layout_marginBottom="4dip"
-			        android:clickable="false"
-			        android:background="@drawable/button_disabled"
-			        android:onClick=""/>
-		        <Button
-			        style="@style/Button"
-			        android:text="@string/history" 
 			        android:layout_marginRight="2dip"
 			        android:clickable="false"
 			        android:background="@drawable/button_disabled"
@@ -95,9 +87,16 @@
 			        android:onClick=""/>
 		        <Button
 			        style="@style/Button"
-			        android:text="@string/option" 
+			        android:text="@string/send_message" 
 			        android:layout_marginLeft="2dip"
 			        android:layout_marginBottom="4dip"
+			        android:clickable="false"
+			        android:background="@drawable/button_disabled"
+			        android:onClick=""/>
+		        <Button
+			        style="@style/Button"
+			        android:text="@string/report_player" 
+			        android:layout_marginLeft="2dip"
 			        android:clickable="false"
 			        android:background="@drawable/button_disabled"
 			        android:onClick=""/>

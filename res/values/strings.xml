@@ -48,10 +48,20 @@
     <string name="label_participant">Participant : </string>
     <string name="see_user_detail">Voir la fiche</string>
     <string name="unknow_fame">Reputation : Inconnue</string>
+    <string name="fame">Reputation : </string>
     <string name="payer">Payer</string>
     <string name="not_enought_money">Vous n\'avez pas assez d\'argent</string>
     <string name="log_out">Déconnexion</string>
     <string name="payement_done">Le payement pour cette aide a été effectué</string>
     <string name="accept_your_hand">a accepté la main que vous lui tendiez</string>
     <string name="you_are_payed">Vous avez été payé par</string>
+    <string name="modif_info">Modifier</string>
+    <string name="feats">Exploits</string>
+    <string name="friends">Amis</string>
+    <string name="position">Position</string>
+    <string name="option">Options</string>
+    <string name="history">Historique</string>
+    <string name="report_player">Signaler ce joueur</string>
+    <string name="send_message">Envoyer un message</string>
+    <string name="send_friend_asking">Ajouter comme ami</string>
 </resources>

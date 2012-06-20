@@ -18,7 +18,6 @@ import org.json.JSONObject;
 import android.util.Log;
 
 import com.exod.utopicvillage.application.UtopicVillageApplication;
-import com.exod.utopicvillage.asynchrone.CallRestWeb;
 import com.exod.utopicvillage.entity.Help;
 import com.exod.utopicvillage.entity.User;
 
@@ -50,18 +49,6 @@ public class WebServiceRest{
         return result;
     } 
 	
-	public void setLatitudeLongitude(double latitude,double longitude){
-		//on envoye les position de l'userà un webservice qui la sauvegarde
-		User user = application.getStorage().getUser();
-		CallRestWeb.callWebService(user.getId()+"/"+latitude+"/"+longitude+"/savePosition");
-		//on suppose que le webservice retourne toujours le satatus ok
-		//TODO
-	}
-	
-	public void deleteHelp(int idHelp){
-		callWebService(idHelp+"/deleteHelp");
-	}
-		
 	public void helpWhereYouVolunteer(){
 		SimpleDateFormat spdate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String result = callWebService(application.getStorage().getUser().getId()+"/helpWhereYouVolunteer");

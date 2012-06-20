@@ -31,12 +31,11 @@ public class GetVolunteerAsync extends AsyncTask<Void, Integer, Boolean>{
 					User volunteer = new User();
 					volunteer.setId(jsonUser.getInt("id"));
 					volunteer.setAmount(jsonUser.getInt("amount"));
-					volunteer.setCommentaire(jsonUser.getString("commentaire"));
+					volunteer.setCommentaire(jsonUser.getString("commentaire")+"");
 					volunteer.setFirstname(jsonUser.getString("firstname"));
 					volunteer.setName(jsonUser.getString("name"));
 					volunteer.setLatitude(jsonUser.getDouble("latitude"));
 					volunteer.setLongitude(jsonUser.getDouble("longitude"));
-					
 					askingHelp.getHashVolunteer().put(new Integer((int) volunteer.getId()), volunteer);
 				}
 				

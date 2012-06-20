@@ -83,11 +83,12 @@ public class MapForHelpActivity extends TabMenuActivity implements OnDoubleTapLi
 			Help help = (Help) iterator.next();
 			GeoPoint point = new GeoPoint((int)(help.getUser().getLatitude()*1000000),(int)(help.getUser().getLongitude()*1000000));
 			
+			String stringDesc = help.getDescritpion();
 			//on split la description dans le cas ou elle est trop longue
-			if(help.getDescritpion()!=null && help.getDescritpion().length()>50){
-				help.setDescritpion(help.getDescritpion().substring(0,50)+" ...");
+			if(stringDesc!=null && stringDesc.length()>50){
+				stringDesc = help.getDescritpion().substring(0,50)+" ...";
 			}
-			CustomOverlayItem overlayitem = new CustomOverlayItem(point, getResources().getString(R.string.ask_for)+" "+DateUtil.convertToStringDifDate(help.getDate()), help.getDescritpion(),"http://ia.media-imdb.com/images/M/MV5BMjAyNjk5Njk0MV5BMl5BanBnXkFtZTcwOTA4MjIyMQ@@._V1._SX40_CR0,0,40,54_.jpg");
+			CustomOverlayItem overlayitem = new CustomOverlayItem(point, getResources().getString(R.string.ask_for)+" "+DateUtil.convertToStringDifDate(help.getDate()), stringDesc,"http://ia.media-imdb.com/images/M/MV5BMjAyNjk5Njk0MV5BMl5BanBnXkFtZTcwOTA4MjIyMQ@@._V1._SX40_CR0,0,40,54_.jpg");
 			overlayitem.setIdHelp(help.getId());
 			
 			itemizedoverlay.addOverlay(overlayitem);

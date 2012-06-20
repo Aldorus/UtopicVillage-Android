@@ -6,7 +6,6 @@ import java.util.Iterator;
 
 import android.app.Activity;
 import android.app.Application;
-import android.util.Log;
 
 import com.exod.utopicvillage.activity.MasterActivity;
 import com.exod.utopicvillage.store.Storage;
@@ -18,7 +17,7 @@ public class UtopicVillageApplication extends Application {
 	WebServiceRest webService;
 	Collection<Activity> pileActivity;
 	int orientation;
-	
+	SearchNotificationPayementThread threadNotif;
 	
 	public UtopicVillageApplication() {
 		storage = new Storage();
@@ -28,12 +27,6 @@ public class UtopicVillageApplication extends Application {
 		// Message
 		// TODO
 	
-		// notification
-		//search notifications
-		if(storage.getUser()!=null){
-			SearchNotificationPayementThread thread = new SearchNotificationPayementThread(this);
-			thread.startMethod(storage.getUser());
-		}
 	}
 
 	public Storage getStorage() {
@@ -60,24 +53,55 @@ public class UtopicVillageApplication extends Application {
 		this.orientation = orientation;
 	}
 	
+	public void startServiceNotification(){
+		// notification
+		//search notifications
+		if(storage.getUser()!=null){
+			threadNotif = new SearchNotificationPayementThread(this);
+			threadNotif.reactivThread();
+			threadNotif.startMethod(storage.getUser());
+		}
+	}
+	public void stopServiceNotification(){
+		if(threadNotif!=null){
+			threadNotif.stopMethod();
+		}
+	}
+	
+	
 	// gestion de la pile de navigation
 	public void addActivityToPile(MasterActivity activity) {
-		// gestion de l'empilement
+		
+		Boolean changementConfig=false;
 		// cas d'exception pour les activity du menu
-		Log.d("ActivityName", activity.getLocalClassName());
-		if ("activity.YourAskingHelpActivity".equals(activity
-				.getLocalClassName())
+		if ("activity.YourAskingHelpActivity".equals(activity.getLocalClassName())
 				|| "activity.MapForHelp".equals(activity.getLocalClassName())
-				|| "activity.MonProfilActivity".equals(activity
-						.getLocalClassName())) {
-			for (Iterator<Activity> iterator = pileActivity.iterator(); iterator
-					.hasNext();) {
+				|| "activity.MonProfilActivity".equals(activity.getLocalClassName())
+		){
+			
+			for (Iterator<Activity> iterator = pileActivity.iterator(); iterator.hasNext();) {
 				Activity activityL = (Activity) iterator.next();
-				// on tue toute les activity
-				activityL.finish();
+				// on tue toute les activity, sauf celle courante
+				//si il s'agit d'un changement d'orentation le onCreate est rapplé mais l'activity ne se restart pas
+				//il faut donc dans ce cas ne pas la rajouter une nouvelle fois à la pile
+				//valable pour n'importe quelle changment de configuration de l'écran
+				if(!activityL.getLocalClassName().equals(activity.getLocalClassName())){
+					activityL.finish();
+				}else{
+					changementConfig=true;
+				}
 			}
 		}
 		// on ajoute la nouvelle
-		pileActivity.add(activity);
+		if(!changementConfig){
+			pileActivity.add(activity);
+		}
+	}
+	
+	public void stop(){
+		for (Iterator<Activity> iterator = pileActivity.iterator(); iterator.hasNext();) {
+			Activity activityL = (Activity) iterator.next();
+			activityL.finish();
+		}
 	}
 }

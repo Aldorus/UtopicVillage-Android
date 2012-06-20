@@ -2,7 +2,6 @@ package com.exod.utopicvillage.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,7 +14,6 @@ import android.widget.LinearLayout;
 
 import com.exod.utopicvillage.R;
 import com.exod.utopicvillage.application.UtopicVillageApplication;
-import com.exod.utopicvillage.listener.PositionListener;
 import com.exod.utopicvillage.store.Storage;
 import com.exod.utopicvillage.transaction.WebServiceRest;
 import com.google.android.maps.MapActivity;
@@ -51,7 +49,7 @@ public class MasterActivity extends MapActivity{
 		//procede au setting de la content view
 		setContentView(R.layout.main);
 		creationOfWorld();
-
+		
 		//on ajoute l'activity a la pile de navigation
 		utopicVillageApplication.addActivityToPile(this);
 	}
@@ -113,26 +111,23 @@ public class MasterActivity extends MapActivity{
 	//menu recherche
 	@Override
 	public boolean onSearchRequested(){
+		//TODO
 		Log.d("Log","opopop");
 		return true;
 	}
 	
-	//reecriture de la methode de start activity pour que ne redemarre pas une activity deja lancée
-	public void startActivityClean(Intent intent) {
-//		if(!intent.getComponent().getShortClassName().equals("."+this.getLocalClassName())){
-			super.startActivity(intent);
-//		}
+	@Override
+	public void startActivity(Intent intent) {
+		super.startActivity(intent);
 	}
 	
-	//envoi des changement de position
-	public void sendPosition(){
-		LocationManager objgps = (LocationManager)utopicVillageApplication.getSystemService(Context.LOCATION_SERVICE);
-	    PositionListener positionListener = new PositionListener();
-	    //on lui permet d'utiliser les element de l'application
-	    positionListener.setWebService(utopicVillageApplication);
-	    objgps.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, positionListener);
+	//reecriture de la methode de start activity pour que ne redemarre pas une activity deja lancée
+	public void startActivityClean(Intent intent) {
+		if(!intent.getComponent().getShortClassName().equals("."+this.getLocalClassName())){
+			startActivity(intent);
+		}
 	}
-    
+	
 	public void displayData(){
 		LinearLayout viewGlobal = (LinearLayout) findViewById(R.id.main_linear);
 		//on remove le spinner
@@ -155,5 +150,4 @@ public class MasterActivity extends MapActivity{
 		theInflatedView.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT));
 		viewGlobal.addView(theInflatedView);
 	}
-	
 }

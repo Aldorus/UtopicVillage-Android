@@ -10,7 +10,6 @@
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 <!--     <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/> -->
     <uses-permission android:name="android.permission.ACCESS_GPS"/>
-    <uses-permission android:name="android.permission.GET_TASKS"/>
     
     <application
         android:name=".application.UtopicVillageApplication" 
@@ -35,5 +34,8 @@
         <activity android:name=".activity.DetailHelpActivity"/>
         <activity android:name=".activity.MapForHelpActivity"/>
         <activity android:name=".activity.MonProfilActivity"/>
+        <activity android:name=".activity.FichePlayerActivity"/>
+        
+        <service android:name=".service.LocationService"/>
     </application>
 </manifest>

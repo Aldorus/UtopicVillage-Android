@@ -14,6 +14,8 @@ public class ConnectActivity extends MasterActivity{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState,R.layout.connect);
+		//on stop les services
+		utopicVillageApplication.stopServiceNotification();
 	}
 	
 	public void goConnect(View view){
@@ -35,6 +37,10 @@ public class ConnectActivity extends MasterActivity{
 			
 			Intent intent= new Intent(this,YourAskingHelpActivity.class	);
 			startActivity(intent);
+			
+			//on demarre les services
+			//notification
+			utopicVillageApplication.startServiceNotification();
 			finish();
 		}else{
 			Builder alertBuilder = new AlertDialog.Builder(this);

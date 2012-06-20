@@ -25,29 +25,33 @@
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
 		        android:orientation="vertical">
-			    <TextView
+			    <EditText
 			        android:id="@+id/name"
-			        style="@style/Texte"
+			        style="@style/TexteField"
+			        android:inputType="number"
 			        android:layout_margin="@dimen/margin_text"
 			        android:layout_weight="1"/>
-			    <TextView
+			    <EditText
 			        android:id="@+id/firstname"
-			        style="@style/Texte"
+			        style="@style/TexteField"
+			        android:inputType="number"
 			        android:layout_margin="@dimen/margin_text"
 			        android:layout_weight="1"/>
-			    <TextView
+			    <EditText
 			        android:id="@+id/email"
-			        style="@style/Texte"
+			        style="@style/TexteField"
+			        android:inputType="number"
 			        android:layout_margin="@dimen/margin_text"
 			        android:layout_weight="1"/>
-			    <TextView
+			    <EditText
 			        android:id="@+id/desc"
-			        style="@style/Texte"
-			        android:layout_margin="@dimen/margin_text"/>
+			        style="@style/TexteField"
+			        android:inputType="textMultiLine"
+			        android:layout_margin="@dimen/margin_text"
+			        android:height="80dip"/>
 		   	</LinearLayout>
 		</LinearLayout>
 		<LinearLayout 
-		    android:baselineAligned="false"
 		    android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	    	android:background="@drawable/wrapper_bottom_content"
@@ -60,25 +64,22 @@
 		        android:orientation="vertical">
 		        <Button
 			        style="@style/Button"
-			        android:text="@string/modif_info"
+			        android:text="@string/ask_help"
 			        android:layout_marginRight="2dip"
 			        android:layout_marginBottom="4dip" 
 			        android:onClick=""/>
 		        <Button
 			        style="@style/Button"
-			        android:text="@string/friends" 
+			        android:text="@string/ask_help" 
 			        android:layout_marginRight="2dip"
 			        android:layout_marginBottom="4dip"
-			        android:clickable="false"
-			        android:background="@drawable/button_disabled"
 			        android:onClick=""/>
 		        <Button
 			        style="@style/Button"
-			        android:text="@string/history" 
+			        android:text="@string/ask_help" 
 			        android:layout_marginRight="2dip"
-			        android:clickable="false"
-			        android:background="@drawable/button_disabled"
 			        android:onClick=""/>
+		        
 		    </LinearLayout>
 		    <LinearLayout 
 		        android:layout_width="match_parent"
@@ -87,20 +88,22 @@
 		        android:orientation="vertical">
 		        <Button
 			        style="@style/Button"
-			        android:text="@string/feats" 
+			        android:text="@string/ask_help" 
 			        android:layout_marginLeft="2dip"
 			        android:layout_marginBottom="4dip"
-			        android:clickable="false"
-			        android:background="@drawable/button_disabled"
 			        android:onClick=""/>
 		        <Button
 			        style="@style/Button"
-			        android:text="@string/option" 
+			        android:text="@string/ask_help" 
 			        android:layout_marginLeft="2dip"
 			        android:layout_marginBottom="4dip"
-			        android:clickable="false"
-			        android:background="@drawable/button_disabled"
 			        android:onClick=""/>
+		        <Button
+			        style="@style/Button"
+			        android:text="@string/ask_help" 
+			        android:layout_marginLeft="2dip"
+			        android:onClick=""/>
+		        
 		    </LinearLayout>
 		</LinearLayout>
 	</LinearLayout>

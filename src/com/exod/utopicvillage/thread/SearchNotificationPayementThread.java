@@ -13,27 +13,40 @@ import com.exod.utopicvillage.util.NotificationHelper;
 
 public class SearchNotificationPayementThread {
 	Context mContexte;
+	
+	boolean stopThread; 
 	public SearchNotificationPayementThread(Context mContexte) {
 		this.mContexte = mContexte;
+		stopThread=false;
+	}
+	public void reactivThread(){
+		stopThread=false;
 	}
 	
 	public void startMethod(final User user){
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
-				searchNotification(user);
-				try {
-					Thread.sleep(60);//60secondes
-					startMethod(user);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+				if(!stopThread){
+					searchNotification(user);
+					try {
+						
+						Thread.sleep(6000);//60secondes
+						startMethod(user);
+					}catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		}).start();
 	}
 	
+	public void stopMethod(){
+		stopThread = true;
+	}
 	
 	protected void searchNotification(User user) {
+		Log.d("Notif","search for notification");
 		String result = CallRestWeb.callWebService(user.getId()+"/getPayementNotification");
 		try {
 			JSONArray jsonArray = new JSONArray(result);

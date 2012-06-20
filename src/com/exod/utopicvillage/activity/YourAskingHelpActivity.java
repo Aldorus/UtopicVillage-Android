@@ -6,6 +6,7 @@ import java.util.Hashtable;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.exod.utopicvillage.R;
 import com.exod.utopicvillage.adaptater.VolunteerAdapter;
+import com.exod.utopicvillage.asynchrone.DeleteHelpAsync;
 import com.exod.utopicvillage.asynchrone.GetVolunteerAsync;
 import com.exod.utopicvillage.asynchrone.InsertNewParticipantAsync;
 import com.exod.utopicvillage.asynchrone.PayerAskingHelpAsync;
@@ -26,6 +28,7 @@ import com.exod.utopicvillage.entity.Help;
 import com.exod.utopicvillage.entity.User;
 import com.exod.utopicvillage.util.CollectionUtil;
 import com.exod.utopicvillage.util.DateUtil;
+import com.exod.utopicvillage.util.StringUtil;
 
 public class YourAskingHelpActivity extends TabMenuActivity{
 	Help help;
@@ -84,8 +87,11 @@ public class YourAskingHelpActivity extends TabMenuActivity{
 		
 	public void goCancel(View view){
 		TextView textId = (TextView) findViewById(R.id.idCell);
-		webService.deleteHelp(Integer.parseInt(textId.getText()+""));
-
+		DeleteHelpAsync async = new DeleteHelpAsync(this);
+		async.execute(Integer.parseInt(textId.getText()+""));
+	}
+	
+	public void callBackCancel(){
 		//changment de vue pour prise en compte de la suppression
 		Intent intent = new Intent(this,YourAskingHelpActivity.class);
 		startActivity(intent);
@@ -127,13 +133,16 @@ public class YourAskingHelpActivity extends TabMenuActivity{
 		TextView text = (TextView) theInflatedView.findViewById(R.id.textCell);
 		TextView sousText= (TextView) theInflatedView.findViewById(R.id.sousTextCell);
 		TextView nombre_point = (TextView) theInflatedView.findViewById(R.id.nombre_point);
-		TextView nombre_volunteer = (TextView) theInflatedView.findViewById(R.id.nombre_volunteer);
 		textId.setText(help.getId()+"");
 		text.setText(getResources().getString(R.string.ask_for)+" "+DateUtil.convertToStringDifDate(help.getDate())+"");
 		sousText.setText(help.getDescritpion()+"");
 		nombre_point.setText(help.getAmount()+" "+getResources().getString(R.string.point));
-		
-		//TODO
+	}
+	
+	public void setListeOfVolunteer(){
+		//on set e nombre de volontaire pour la cellule de l'aide
+		//problematique apparut avec les requetes asynchrones
+		TextView nombre_volunteer = (TextView) findViewById(R.id.nombre_volunteer);
 		if(help.getHashVolunteer()==null || help.getHashVolunteer().size()<2){
 			//sigulier
 			nombre_volunteer.setText(help.getHashVolunteer().size()+" "+getResources().getString(R.string.volunteer));
@@ -141,10 +150,8 @@ public class YourAskingHelpActivity extends TabMenuActivity{
 			//masculin
 			nombre_volunteer.setText(help.getHashVolunteer().size()+" "+getResources().getString(R.string.volunteers));
 		}
-	}
-	
-	public void setListeOfVolunteer(){
-		//reconstitution de la hashtable avec la collection
+		
+		//reconstitution de la hashtable avec la hasttable complete
 		Hashtable<String, Collection<String>>hashtable = new Hashtable<String, Collection<String>>();
 		hashtable = CollectionUtil.convertHashToHashForUser(help.getHashVolunteer());
 		
@@ -154,7 +161,7 @@ public class YourAskingHelpActivity extends TabMenuActivity{
 		Collection<String> colDesc = hashtable.get("desc");
 		Collection<String> colPointReputaiton  = hashtable.get("point_reputation");
 		
-		//suppression du champ "volontaires :" dans le cas ou la collection est vide
+		//suppression du champ "volontaires :" dans le cas ou les collections sont vides
 		if(colId.size()==0){
 			TextView textView = (TextView)findViewById(R.id.label_volunteer);
 			textView.setVisibility(View.GONE);
@@ -164,8 +171,8 @@ public class YourAskingHelpActivity extends TabMenuActivity{
 		//for the custom adapter
 		String[] id = (String[])colId.toArray(new String[colId.size()]);
 		String[] name = (String[])colName.toArray(new String[colName.size()]);
-		String[] desc = (String[])colName.toArray(new String[colDesc.size()]);
-		String[] pointReputaiton = (String[])colName.toArray(new String[colPointReputaiton.size()]);
+		String[] desc = (String[])colDesc.toArray(new String[colDesc.size()]);
+		String[] pointReputaiton = (String[])colPointReputaiton.toArray(new String[colPointReputaiton.size()]);
 		
 		//we use the custom adaptater
 		VolunteerAdapter adapter = new VolunteerAdapter(this, name, id, desc, pointReputaiton);
@@ -186,8 +193,8 @@ public class YourAskingHelpActivity extends TabMenuActivity{
 			}
 		});
 	}
-//	private static final int HELLO_ID = 1;
-	private void setTheParticipant(){
+
+	public void setTheParticipant(){
 
 		TextView nombre_volunteer = (TextView)findViewById(R.id.nombre_volunteer);
 		nombre_volunteer.setVisibility(View.GONE);
@@ -200,8 +207,7 @@ public class YourAskingHelpActivity extends TabMenuActivity{
 		theInflatedView.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
 		viewCell.addView(theInflatedView);
 		
-		//on ajoute les elements de l'aide
-		
+		//on ajoute les elements du participant
 		TextView textId = (TextView) theInflatedView.findViewById(R.id.idCell);
 		TextView text = (TextView) theInflatedView.findViewById(R.id.textCell);
 		TextView sousText= (TextView) theInflatedView.findViewById(R.id.sousTextCell);
@@ -211,7 +217,7 @@ public class YourAskingHelpActivity extends TabMenuActivity{
 		textId.setText(participant.getId()+"");
 		text.setText(participant.getName()+" "+participant.getFirstname());
 		//TODO
-		sousText.setText("");
+		sousText.setText(StringUtil.isNotNullShort(participant.getCommentaire()));
 		pointReputation.setText("0");
 	}
 	
@@ -236,6 +242,16 @@ public class YourAskingHelpActivity extends TabMenuActivity{
 		toast.show();
 		
 		Intent intent = new Intent(this,YourAskingHelpActivity.class);
+		startActivity(intent);
+	}
+	
+	public void goDetail(View view){
+		//voir la fiche d'un joueur
+		
+		int userId = Integer.parseInt(view.getTag()+"");
+		Log.d("Ok","we are ok, lets go "+userId);
+		Intent intent = new Intent(this,FichePlayerActivity.class);
+		intent.putExtra("userId", userId+"");
 		startActivity(intent);
 	}
 }
