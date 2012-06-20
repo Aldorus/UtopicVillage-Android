@@ -5,8 +5,11 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Application;
+import android.app.AlertDialog.Builder;
 
+import com.exod.utopicvillage.R;
 import com.exod.utopicvillage.activity.MasterActivity;
 import com.exod.utopicvillage.store.Storage;
 import com.exod.utopicvillage.thread.SearchNotificationPayementThread;
@@ -103,5 +106,13 @@ public class UtopicVillageApplication extends Application {
 			Activity activityL = (Activity) iterator.next();
 			activityL.finish();
 		}
+	}
+	
+	public void catchErrorServer(){
+		Builder alertBuilder = new AlertDialog.Builder(this);
+		alertBuilder.setMessage(getResources().getString(R.string.error_information));
+		alertBuilder.setNeutralButton(getResources().getString(R.string.close), null);
+		alertBuilder.setTitle(getResources().getString(R.string.Woops));
+		alertBuilder.create().show();
 	}
 }

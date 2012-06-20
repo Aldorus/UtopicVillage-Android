@@ -34,7 +34,7 @@
     <string name="volunteer">volontaire</string>
     <string name="volunteers">volontaires</string>
     <string name="already_volonteer">Déjà volontaire</string>
-    <string name="you_re_volunteer">Vous êtez volontaire pour cette demande d\'aide</string>
+    <string name="you_re_volunteer">Vous vous êtez porté volontaire pour cette demande d\'aide</string>
     <string name="element_for_baloon">Element pour le balon</string>
     <string name="cancel_help">Annuler cette demande</string>
     <string name="show_on_map">Voir sur la carte</string>
@@ -62,6 +62,16 @@
     <string name="option">Options</string>
     <string name="history">Historique</string>
     <string name="report_player">Signaler ce joueur</string>
+    <string name="reported_player">Vous avez signalé ce joueur</string>
     <string name="send_message">Envoyer un message</string>
     <string name="send_friend_asking">Ajouter comme ami</string>
+    <string name="namemust">Nom : *</string>
+    <string name="firstnamemust">Prénom : *</string>
+    <string name="field_must">* = Champs obligatoire</string>
+    <string name="emailmust">Email : *</string>
+    <string name="email">Email : </string>
+    <string name="passwordmust">Password : *</string>
+    <string name="desc">Description : </string>
+    <string name="birthdatemust">Date de naissance : *</string>
+    <string name="birthdate">Date de naissance : </string>
 </resources>

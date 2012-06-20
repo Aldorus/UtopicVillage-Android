@@ -13,7 +13,7 @@ public class DeleteHelpAsync extends AsyncTask<Integer, Integer, Void>{
 	
 	@Override
 	protected Void doInBackground(Integer... params) {
-		CallRestWeb.callWebService(params[0]+"/deleteHelp");
+		CallRestWeb.callWebService(activity,params[0]+"/deleteHelp");
 		return null;
 	}
 

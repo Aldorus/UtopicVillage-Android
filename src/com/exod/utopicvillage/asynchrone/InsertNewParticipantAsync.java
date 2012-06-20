@@ -3,7 +3,6 @@ package com.exod.utopicvillage.asynchrone;
 import java.util.Hashtable;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.exod.utopicvillage.activity.YourAskingHelpActivity;
 import com.exod.utopicvillage.entity.Help;
@@ -16,8 +15,7 @@ public class InsertNewParticipantAsync extends AsyncTask<Integer, Integer, Boole
 	}
 	@Override
 	protected Boolean doInBackground(Integer... idUsers) {
-		Log.d("TAg","Pouettte");
-		CallRestWeb.callWebService(activity.utopicVillageApplication.getStorage().getAskingHelp().getId()+"/"+idUsers[0]+"/insertParticipant");
+		CallRestWeb.callWebService(activity,activity.utopicVillageApplication.getStorage().getAskingHelp().getId()+"/"+idUsers[0]+"/insertParticipant");
 		Help asking = activity.utopicVillageApplication.getStorage().getAskingHelp();
 		Hashtable<Integer, User>hashVol = asking.getHashVolunteer();
 		

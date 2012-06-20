@@ -92,20 +92,24 @@ public class MasterActivity extends MapActivity{
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    // Handle item selection
-	    switch (item.getItemId()) {
-	    case R.id.logout:
-	        Intent intent = new Intent(this,ConnectActivity.class);
-	        utopicVillageApplication.setStorage(new Storage());
-	        startActivityClean(intent);
-	    	return true;
-	    case R.id.me:
-	        Intent intent2 = new Intent(this,MonProfilActivity.class);
-	        startActivityClean(intent2);
-	    	return true;
-	    default:
-	    	return true;
-	    }
+		//selement si on est sur une activity loggé
+		if(header){
+		    // Handle item selection
+		    switch (item.getItemId()) {
+		    case R.id.logout:
+		        Intent intent = new Intent(this,ConnectActivity.class);
+		        utopicVillageApplication.setStorage(new Storage());
+		        startActivityClean(intent);
+		    	return true;
+		    case R.id.me:
+		        Intent intent2 = new Intent(this,MonProfilActivity.class);
+		        startActivityClean(intent2);
+		    	return true;
+		    default:
+		    	return true;
+		    }
+		}
+		return false;
 	}
 	
 	//menu recherche
@@ -149,5 +153,10 @@ public class MasterActivity extends MapActivity{
 		LinearLayout theInflatedView = (LinearLayout)inflater.inflate(R.layout.spinner, null); 
 		theInflatedView.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT));
 		viewGlobal.addView(theInflatedView);
+	}
+	
+	public void catchErrorServeur(){
+		//se produit lors qu'il y a une error soit de connection soit du serveur
+		
 	}
 }

@@ -19,4 +19,11 @@ public class StringUtil {
 		}
 		return chaine;
 	}
+	
+	public static boolean isEmpty(String chaine){
+		if("".equals(chaine) || " ".equals(chaine) || "null".equals(chaine) || "NULL".equals(chaine) || "Null".equals(chaine)){
+			return true;
+		}
+		return false;
+	}
 }

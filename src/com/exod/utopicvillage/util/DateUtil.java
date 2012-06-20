@@ -1,9 +1,15 @@
 package com.exod.utopicvillage.util;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DateUtil {
 	
+	static SimpleDateFormat spdate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	public static String convertToString(Date event){
+		SimpleDateFormat sp = new SimpleDateFormat("dd/MM/yyyy");
+		return sp.format(event);
+	}
 	
 	public static String convertToStringDifDate(Date event){
 		//pour une comparaison avec la date d'aujourd'hui

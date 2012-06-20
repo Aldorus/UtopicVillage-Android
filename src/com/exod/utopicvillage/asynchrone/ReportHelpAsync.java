@@ -12,7 +12,7 @@ public class ReportHelpAsync extends AsyncTask<Integer, Integer, Boolean>{
 	
 	@Override
 	protected Boolean doInBackground(Integer... idHelps) {
-		CallRestWeb.callWebService(idHelps[0]+"/reportHelp");
+		CallRestWeb.callWebService(activity,idHelps[0]+"/reportHelp");
 		return true;	
 	}
 	

@@ -17,7 +17,7 @@ public class ToBeVolunteerAsync extends AsyncTask<Void,Integer,Void> {
 	@Override
 	protected Void doInBackground(Void... params) {
 		User user = activity.utopicVillageApplication.getStorage().getUser();
-		CallRestWeb.callWebService(user.getId()+"/"+help.getId()+"/insertNewVolunteer");
+		CallRestWeb.callWebService(activity,user.getId()+"/"+help.getId()+"/insertNewVolunteer");
 		return null;
 	}
 	

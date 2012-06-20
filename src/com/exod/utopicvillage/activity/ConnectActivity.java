@@ -16,12 +16,26 @@ public class ConnectActivity extends MasterActivity{
 		super.onCreate(savedInstanceState,R.layout.connect);
 		//on stop les services
 		utopicVillageApplication.stopServiceNotification();
+		Bundle bundle = getIntent().getExtras();
+		if(bundle!=null){
+			goConnect(null);
+		}
 	}
 	
 	public void goConnect(View view){
+		String email = "";
+		String password = "";
+		//si on viens de l'enregistrement
+		Bundle bundle = getIntent().getExtras();
+		if(bundle!=null){
+			email = bundle.getString("email");
+			password = bundle.getString("password");
+		}else{
+			//on recupere les parametres sur la vue
+			email = (String)((EditText)findViewById(R.id.emailField)).getText().toString();
+			password = (String)((EditText)findViewById(R.id.passwordField)).getText().toString();
+		}
 		//on fait appel au webService de test de connection 
-		String email = (String)((EditText)findViewById(R.id.emailField)).getText().toString();
-		String password = (String)((EditText)findViewById(R.id.passwordField)).getText().toString();
 		//appel asynchrone
 		ConnectAsync connection = new ConnectAsync(this, email, password);
 		connection.execute();
@@ -54,7 +68,7 @@ public class ConnectActivity extends MasterActivity{
 	
 	public void goRegister(View view){
 		//under construct
-		Intent intent= new Intent(this,UnderConstructActivity.class	);
+		Intent intent= new Intent(this,RegisterActivity.class	);
 		startActivity(intent);
 	}
 	

@@ -2,15 +2,20 @@ package com.exod.utopicvillage.activity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.exod.utopicvillage.R;
 import com.exod.utopicvillage.asynchrone.GetUserAsync;
+import com.exod.utopicvillage.asynchrone.ReportPlayerAsync;
 import com.exod.utopicvillage.entity.User;
 import com.exod.utopicvillage.util.IntegerUtil;
 import com.exod.utopicvillage.util.StringUtil;
 
 public class FichePlayerActivity extends TabMenuActivity{
+	User userDisplay;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState,R.layout.fiche_player);
@@ -31,10 +36,23 @@ public class FichePlayerActivity extends TabMenuActivity{
 	}
 	
 	public void displayInformation(User user){
+		this.userDisplay = user;
 		TextView textName = (TextView)findViewById(R.id.name);
 		TextView textDesc = (TextView)findViewById(R.id.desc);
 		
 		textDesc.setText(StringUtil.isNotNull(user.getCommentaire()));
 		textName.setText(user.getName()+" "+user.getFirstname());
+	}
+	
+	public void goSignalerJoueur(View view){
+		ReportPlayerAsync async = new ReportPlayerAsync(this);
+		async.execute(this.userDisplay.getId());
+	}
+	
+	public void callbackReport(){
+		CharSequence text = getResources().getString(R.string.reported_player);
+		int duration = Toast.LENGTH_SHORT;
+		Toast toast = Toast.makeText(getApplicationContext(), text, duration);
+		toast.show();
 	}
 }

@@ -1,9 +1,9 @@
 package com.exod.utopicvillage.asynchrone;
 
+import android.os.AsyncTask;
+
 import com.exod.utopicvillage.application.UtopicVillageApplication;
 import com.exod.utopicvillage.entity.User;
-
-import android.os.AsyncTask;
 
 public class SendPosiAsync extends AsyncTask<Double, Integer, Void>{
 	UtopicVillageApplication application;

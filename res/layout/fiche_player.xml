@@ -95,11 +95,10 @@
 			        android:onClick=""/>
 		        <Button
 			        style="@style/Button"
+			        android:id="@+id/report_player"
 			        android:text="@string/report_player" 
 			        android:layout_marginLeft="2dip"
-			        android:clickable="false"
-			        android:background="@drawable/button_disabled"
-			        android:onClick=""/>
+			        android:onClick="goSignalerJoueur"/>
 		    </LinearLayout>
 		</LinearLayout>
 	</LinearLayout>

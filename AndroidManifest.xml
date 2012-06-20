@@ -35,6 +35,7 @@
         <activity android:name=".activity.MapForHelpActivity"/>
         <activity android:name=".activity.MonProfilActivity"/>
         <activity android:name=".activity.FichePlayerActivity"/>
+        <activity android:name=".activity.RegisterActivity"/>
         
         <service android:name=".service.LocationService"/>
     </application>

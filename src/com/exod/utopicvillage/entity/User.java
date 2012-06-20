@@ -1,5 +1,7 @@
 package com.exod.utopicvillage.entity;
 
+import java.util.Date;
+
 import android.widget.ImageView;
 
 import com.exod.utopicvillage.R;
@@ -14,6 +16,8 @@ public class User {
 	private double latitude;
 	private double longitude;
 	private String commentaire;
+	private Date birthdate;
+	private String email;
 	
 	public int getId() {
 		return id;
@@ -65,6 +69,18 @@ public class User {
 	}
 	public void setCommentaire(String commentaire) {
 		this.commentaire = commentaire;
+	}
+	public Date getBirthdate() {
+		return birthdate;
+	}
+	public void setBirthdate(Date birthdate) {
+		this.birthdate = birthdate;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 }

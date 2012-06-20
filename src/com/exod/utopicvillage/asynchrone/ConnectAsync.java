@@ -7,7 +7,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.exod.utopicvillage.activity.ConnectActivity;
-import com.exod.utopicvillage.entity.User;
+import com.exod.utopicvillage.util.ParsingUtil;
 
 public class ConnectAsync extends AsyncTask<Void, Integer, Boolean> {
 
@@ -26,7 +26,9 @@ public class ConnectAsync extends AsyncTask<Void, Integer, Boolean> {
 		JSONObject jsonObject;
 		String status;
 		try {
-			String resultWebServ = CallRestWeb.callWebService(email+"/"+password+"/testConnect");
+			String resultWebServ = null;
+			resultWebServ = CallRestWeb.callWebService(activity,email+"/"+password+"/testConnect");
+			
 			if(resultWebServ==null){
 				return false;
 			}
@@ -41,14 +43,7 @@ public class ConnectAsync extends AsyncTask<Void, Integer, Boolean> {
 			//on set l'user 
 			try {
 				JSONObject jsonObjectUser = jsonObject.getJSONObject("user");
-				User user = activity.utopicVillageApplication.getStorage().getUser();
-				user.setId(jsonObjectUser.getInt("id"));
-				user.setAmount(jsonObjectUser.getInt("amount"));
-				user.setName(jsonObjectUser.getString("name"));
-				user.setFirstname(jsonObjectUser.getString("firstname"));
-				user.setLatitude(jsonObjectUser.getDouble("latitude"));
-				user.setLongitude(jsonObjectUser.getDouble("longitude"));
-				activity.utopicVillageApplication.getStorage().setUser(user);
+				activity.utopicVillageApplication.getStorage().setUser(ParsingUtil.toUser(jsonObjectUser));
 			} catch (JSONException e) {
 				Log.d("error","error lors du parsing "+e);
 				return false;

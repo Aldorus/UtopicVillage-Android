@@ -23,8 +23,8 @@ public class InsertHelpAsync extends AsyncTask<Help,Integer,Boolean>{
 		JSONObject jsonObject;
 		String status=null;
 		try {
-			String resultWebServ;
-			resultWebServ = CallRestWeb.callWebService(help.getUser().getId()+"/"+help.getAmount()+"/"+help.getDescritpion()+"/"+help.isReproducible()+"/insertHelp");
+			String resultWebServ = null;
+			resultWebServ = CallRestWeb.callWebService(activity,help.getUser().getId()+"/"+help.getAmount()+"/"+help.getDescritpion()+"/"+help.isReproducible()+"/insertHelp");
 			if(resultWebServ==null){
 				return false;
 			}

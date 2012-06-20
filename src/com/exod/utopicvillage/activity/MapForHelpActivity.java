@@ -31,7 +31,7 @@ public class MapForHelpActivity extends TabMenuActivity implements OnDoubleTapLi
         User user = utopicVillageApplication.getStorage().getUser();
         GeoPoint centreMap = new GeoPoint((int)(user.getLatitude()*1000000), (int)(user.getLongitude()*1000000));
         mapView = (MapView) findViewById(R.id.map_for_help);
-        mapView.getController().setZoom(10);
+        mapView.getController().setZoom(12);
         mapView.getController().setCenter(centreMap);
         mapView.getController().animateTo(centreMap);
         

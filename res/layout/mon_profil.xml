@@ -26,24 +26,18 @@
 		        android:layout_height="wrap_content"
 		        android:orientation="vertical">
 			    <TextView
+			        android:layout_marginTop="@dimen/margin_text"
 			        android:id="@+id/name"
-			        style="@style/Texte"
-			        android:layout_margin="@dimen/margin_text"
-			        android:layout_weight="1"/>
+			        style="@style/Texte"/>
 			    <TextView
-			        android:id="@+id/firstname"
-			        style="@style/Texte"
-			        android:layout_margin="@dimen/margin_text"
-			        android:layout_weight="1"/>
+			        android:id="@+id/birthdate"
+			        style="@style/Texte"/>
 			    <TextView
 			        android:id="@+id/email"
-			        style="@style/Texte"
-			        android:layout_margin="@dimen/margin_text"
-			        android:layout_weight="1"/>
+			        style="@style/Texte"/>
 			    <TextView
 			        android:id="@+id/desc"
-			        style="@style/Texte"
-			        android:layout_margin="@dimen/margin_text"/>
+			        style="@style/Texte"/>
 		   	</LinearLayout>
 		</LinearLayout>
 		<LinearLayout 

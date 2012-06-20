@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.exod.utopicvillage.activity.FichePlayerActivity;
 import com.exod.utopicvillage.entity.User;
+import com.exod.utopicvillage.util.ParsingUtil;
 
 public class GetUserAsync extends AsyncTask<Integer, Integer, User> {
 	FichePlayerActivity activity;
@@ -17,18 +18,11 @@ public class GetUserAsync extends AsyncTask<Integer, Integer, User> {
 	
 	@Override
 	protected User doInBackground(Integer... params) {
-		String result = CallRestWeb.callWebService(params[0]+"/getInfoUser");
+		String result = null;
+		result = CallRestWeb.callWebService(activity,params[0]+"/getInfoUser");
 		try {
 			JSONObject jsonObject = (JSONObject) new JSONObject(result);
-			User user = new User();
-			user.setId(jsonObject.getInt("id"));
-			user.setAmount(jsonObject.getInt("amount"));
-			user.setCommentaire(jsonObject.getString("commentaire"));
-			user.setFirstname(jsonObject.getString("firstname"));
-			user.setName(jsonObject.getString("name"));
-			user.setLatitude(jsonObject.getDouble("latitude"));
-			user.setLongitude(jsonObject.getDouble("longitude"));
-			return user;
+			return ParsingUtil.toUser(jsonObject);
 		} catch (JSONException e) {
 			Log.d("TAG","error lors du parsing JSON asking help "+e);
 			return null;
