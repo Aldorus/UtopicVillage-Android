@@ -16,7 +16,7 @@ public class RegisterAsync extends AsyncTask<String, Integer, Boolean>{
 	@Override
 	protected Boolean doInBackground(String... params) {
 		// @Route("/{password}/{birthdate}/{email}/{name}/{firstname}/{description}/insertUser",name="insertUser")
-		CallRestWeb.callWebService(activity,params[0]+"/"+params[1]+"/"+params[2]+"/"+params[3]+"/"+params[4]+"/"+params[5]+"/insertUser");
+		CallRestWeb.callWebService(activity,params[0]+"/"+params[1]+"/"+params[2]+"/"+params[3]+"/"+params[4]+"/"+params[5]+" /insertUser");
 		
 		email = params[2];
 		password = params[0];

@@ -5,11 +5,9 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Application;
-import android.app.AlertDialog.Builder;
+import android.util.Log;
 
-import com.exod.utopicvillage.R;
 import com.exod.utopicvillage.activity.MasterActivity;
 import com.exod.utopicvillage.store.Storage;
 import com.exod.utopicvillage.thread.SearchNotificationPayementThread;
@@ -21,15 +19,12 @@ public class UtopicVillageApplication extends Application {
 	Collection<Activity> pileActivity;
 	int orientation;
 	SearchNotificationPayementThread threadNotif;
+	public boolean errorServer;
 	
 	public UtopicVillageApplication() {
 		storage = new Storage();
 		webService = new WebServiceRest(this);
 		pileActivity = new ArrayList<Activity>();
-		// on lance les thread
-		// Message
-		// TODO
-	
 	}
 
 	public Storage getStorage() {
@@ -74,31 +69,19 @@ public class UtopicVillageApplication extends Application {
 	
 	// gestion de la pile de navigation
 	public void addActivityToPile(MasterActivity activity) {
-		
-		Boolean changementConfig=false;
+		Log.d("ajoutPile","ajouté a la pile "+activity.getLocalClassName());
 		// cas d'exception pour les activity du menu
 		if ("activity.YourAskingHelpActivity".equals(activity.getLocalClassName())
-				|| "activity.MapForHelp".equals(activity.getLocalClassName())
+				|| "activity.MapForHelpActivity".equals(activity.getLocalClassName())
 				|| "activity.MonProfilActivity".equals(activity.getLocalClassName())
 		){
-			
+			Log.d("Clean","clean de la pile");
 			for (Iterator<Activity> iterator = pileActivity.iterator(); iterator.hasNext();) {
 				Activity activityL = (Activity) iterator.next();
-				// on tue toute les activity, sauf celle courante
-				//si il s'agit d'un changement d'orentation le onCreate est rapplé mais l'activity ne se restart pas
-				//il faut donc dans ce cas ne pas la rajouter une nouvelle fois à la pile
-				//valable pour n'importe quelle changment de configuration de l'écran
-				if(!activityL.getLocalClassName().equals(activity.getLocalClassName())){
-					activityL.finish();
-				}else{
-					changementConfig=true;
-				}
+				activityL.finish();
 			}
 		}
-		// on ajoute la nouvelle
-		if(!changementConfig){
-			pileActivity.add(activity);
-		}
+		pileActivity.add(activity);
 	}
 	
 	public void stop(){
@@ -109,10 +92,6 @@ public class UtopicVillageApplication extends Application {
 	}
 	
 	public void catchErrorServer(){
-		Builder alertBuilder = new AlertDialog.Builder(this);
-		alertBuilder.setMessage(getResources().getString(R.string.error_information));
-		alertBuilder.setNeutralButton(getResources().getString(R.string.close), null);
-		alertBuilder.setTitle(getResources().getString(R.string.Woops));
-		alertBuilder.create().show();
+		errorServer=true;
 	}
 }

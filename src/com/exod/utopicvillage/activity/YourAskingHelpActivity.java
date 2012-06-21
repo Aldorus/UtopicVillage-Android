@@ -6,7 +6,6 @@ import java.util.Hashtable;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
@@ -217,7 +216,9 @@ public class YourAskingHelpActivity extends TabMenuActivity{
 		textId.setText(participant.getId()+"");
 		text.setText(participant.getName()+" "+participant.getFirstname());
 		//TODO
-		sousText.setText(StringUtil.isNotNullShort(participant.getCommentaire()));
+		if(participant.getCommentaire()!=null){
+			sousText.setText(StringUtil.isNotNullShort(participant.getCommentaire()));
+		}
 		pointReputation.setText("0");
 	}
 	
@@ -249,7 +250,6 @@ public class YourAskingHelpActivity extends TabMenuActivity{
 		//voir la fiche d'un joueur
 		
 		int userId = Integer.parseInt(view.getTag()+"");
-		Log.d("Ok","we are ok, lets go "+userId);
 		Intent intent = new Intent(this,FichePlayerActivity.class);
 		intent.putExtra("userId", userId+"");
 		startActivity(intent);

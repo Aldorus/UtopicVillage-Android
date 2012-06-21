@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Utopic Village</string>
-    
+    <string name="exod_creation">Exod Creation</string>
     <string name="title_menu">Menu</string>
     <string name="menu_helpme">Aidez-moi</string>
     <string name="menu_volonteer">Participer</string>
@@ -74,4 +74,7 @@
     <string name="desc">Description : </string>
     <string name="birthdatemust">Date de naissance : *</string>
     <string name="birthdate">Date de naissance : </string>
+    <string name="connctivity_probleme">Problème de connectivité</string>
+    <string name="search_label">Rechercher une demande d\'aide</string>
+    <string name="modif_password">Modifier mot de passe</string>
 </resources>

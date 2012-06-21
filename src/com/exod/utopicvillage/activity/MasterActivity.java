@@ -1,13 +1,11 @@
 package com.exod.utopicvillage.activity;
 
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
@@ -41,6 +39,9 @@ public class MasterActivity extends MapActivity{
 		storage = utopicVillageApplication.getStorage();
 		webService = utopicVillageApplication.getWebService();
 		
+		//on verifie si on proviens d'une error serveur
+		this.testError();
+		
 		//creationOfWorld(idRessource, false, false);
 		this.idRessource = idRessource;
 		this.menu = menu;
@@ -48,10 +49,7 @@ public class MasterActivity extends MapActivity{
 		
 		//procede au setting de la content view
 		setContentView(R.layout.main);
-		creationOfWorld();
-		
-		//on ajoute l'activity a la pile de navigation
-		utopicVillageApplication.addActivityToPile(this);
+		creationOfWorld();		
 	}
 	
 	private void creationOfWorld(){
@@ -80,49 +78,16 @@ public class MasterActivity extends MapActivity{
 		return false;
 	}
 	
-	//Gestion des evenements
-	
-	//Gestion des touches spé android.
-	//menu option
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.menu_option, menu);
-	    return true;
-	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		//selement si on est sur une activity loggé
-		if(header){
-		    // Handle item selection
-		    switch (item.getItemId()) {
-		    case R.id.logout:
-		        Intent intent = new Intent(this,ConnectActivity.class);
-		        utopicVillageApplication.setStorage(new Storage());
-		        startActivityClean(intent);
-		    	return true;
-		    case R.id.me:
-		        Intent intent2 = new Intent(this,MonProfilActivity.class);
-		        startActivityClean(intent2);
-		    	return true;
-		    default:
-		    	return true;
-		    }
-		}
-		return false;
-	}
-	
-	//menu recherche
-	@Override
-	public boolean onSearchRequested(){
-		//TODO
-		Log.d("Log","opopop");
-		return true;
-	}
-	
 	@Override
 	public void startActivity(Intent intent) {
+		//on ajoute l'activity a la pile de navigation
 		super.startActivity(intent);
+	}
+	
+	@Override
+	protected void onStart() {
+		utopicVillageApplication.addActivityToPile(this);
+		super.onStart();
 	}
 	
 	//reecriture de la methode de start activity pour que ne redemarre pas une activity deja lancée
@@ -155,8 +120,20 @@ public class MasterActivity extends MapActivity{
 		viewGlobal.addView(theInflatedView);
 	}
 	
-	public void catchErrorServeur(){
-		//se produit lors qu'il y a une error soit de connection soit du serveur
-		
+	public void testError(){
+		if(utopicVillageApplication.errorServer){
+			//on cas d'error d'excecution du serveur
+			Builder alertBuilder = new AlertDialog.Builder(this);
+			alertBuilder.setMessage(getResources().getString(R.string.connctivity_probleme));
+			alertBuilder.setNeutralButton(getResources().getString(R.string.close), null);
+			alertBuilder.setTitle(getResources().getString(R.string.Woops));
+			alertBuilder.create().show();
+			//on redirige vers la connection
+			utopicVillageApplication.errorServer=false;
+			Intent intent = new Intent(this, ConnectActivity.class);
+			startActivity(intent);
+			//et on tue l'activité en cours car pouvant causer des errors
+			finish();
+		}
 	}
 }

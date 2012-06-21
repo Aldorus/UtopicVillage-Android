@@ -59,7 +59,6 @@ public class ConnectAsync extends AsyncTask<Void, Integer, Boolean> {
 		super.onPreExecute();
 	}
 	
-	
 	@Override
     protected void onPostExecute(Boolean result) {
 		activity.callbackAsync(result);

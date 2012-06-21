@@ -20,6 +20,10 @@ public class ConnectActivity extends MasterActivity{
 		if(bundle!=null){
 			goConnect(null);
 		}
+		if(storage.getUser()!=null && storage.getUser().getName()!=null){
+			//on provient d'une error donc on redirige vers la page suivante
+			callbackAsync(true);
+		}
 	}
 	
 	public void goConnect(View view){

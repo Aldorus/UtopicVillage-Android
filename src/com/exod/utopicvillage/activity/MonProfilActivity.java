@@ -1,6 +1,8 @@
 package com.exod.utopicvillage.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.exod.utopicvillage.R;
@@ -24,5 +26,10 @@ public class MonProfilActivity extends TabMenuActivity{
 		textDesc.setText(StringUtil.isNotNull(storage.getUser().getCommentaire()));
 		
 		
+	}
+	
+	public void doModif(View view){
+		Intent intent = new Intent(this,ModifProfilActivity.class);
+		startActivity(intent);
 	}
 }

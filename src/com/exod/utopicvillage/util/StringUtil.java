@@ -2,7 +2,7 @@ package com.exod.utopicvillage.util;
 
 public class StringUtil {
 	public static String isNotNull(String chaine){
-		if("NULL".equals(chaine) || "null".equals(chaine) || " ".equals(chaine) || "Null".equals(chaine)){
+		if(chaine==null || "NULL".equals(chaine) || "null".equals(chaine) || " ".equals(chaine) || "Null".equals(chaine)){
 			return "";
 		}
 		return chaine;

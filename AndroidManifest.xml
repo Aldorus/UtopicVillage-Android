@@ -36,7 +36,14 @@
         <activity android:name=".activity.MonProfilActivity"/>
         <activity android:name=".activity.FichePlayerActivity"/>
         <activity android:name=".activity.RegisterActivity"/>
-        
+        <activity android:name=".activity.ModifProfilActivity"/>
+        <activity android:name=".activity.SearchableActivity" >
+        	<intent-filter>
+	        	<action android:name="android.intent.action.SEARCH" />
+	        </intent-filter>
+	        <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
+	    </activity>
+	    
         <service android:name=".service.LocationService"/>
     </application>
 </manifest>

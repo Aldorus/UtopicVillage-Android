@@ -3,7 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" 
-    android:id="@+id/main_content">
-    
+    android:id="@+id/main_content"
+    android:gravity="center" >
+
+    <ImageView 
+        android:src="@drawable/logo_exod"
+        android:contentDescription="@string/logoExod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/exod_creation"
+        android:textSize="@dimen/font_size_title_screen"/>
 
 </LinearLayout>

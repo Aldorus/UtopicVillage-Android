@@ -57,7 +57,7 @@
 			        android:text="@string/modif_info"
 			        android:layout_marginRight="2dip"
 			        android:layout_marginBottom="4dip" 
-			        android:onClick=""/>
+			        android:onClick="doModif"/>
 		        <Button
 			        style="@style/Button"
 			        android:text="@string/friends" 
@@ -92,6 +92,13 @@
 			        android:text="@string/option" 
 			        android:layout_marginLeft="2dip"
 			        android:layout_marginBottom="4dip"
+			        android:clickable="false"
+			        android:background="@drawable/button_disabled"
+			        android:onClick=""/>
+		        <Button
+			        style="@style/Button"
+			        android:text="@string/modif_password" 
+			        android:layout_marginLeft="2dip"
 			        android:clickable="false"
 			        android:background="@drawable/button_disabled"
 			        android:onClick=""/>

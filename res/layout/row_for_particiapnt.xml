@@ -46,7 +46,7 @@
 		        android:layout_height="wrap_content"
 		        android:textSize="@dimen/font_size_little"
 		        android:textColor="@color/text_color_little"
-		        android:text="Fuck?"
+		        android:text=""
 				android:layout_marginLeft="@dimen/margin_text"/>
 		    <TextView
 	            android:id="@+id/point_reputation"
