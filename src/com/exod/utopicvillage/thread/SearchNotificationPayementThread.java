@@ -7,19 +7,20 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Context;
 import android.util.Log;
 
+import com.exod.utopicvillage.R;
+import com.exod.utopicvillage.application.UtopicVillageApplication;
 import com.exod.utopicvillage.asynchrone.CallRestWeb;
 import com.exod.utopicvillage.entity.User;
 import com.exod.utopicvillage.util.NotificationHelper;
 
 public class SearchNotificationPayementThread {
-	Context mContexte;
+	UtopicVillageApplication application;
 	
 	boolean stopThread; 
-	public SearchNotificationPayementThread(Context mContexte) {
-		this.mContexte = mContexte;
+	public SearchNotificationPayementThread(UtopicVillageApplication application) {
+		this.application = application;
 		stopThread=false;
 	}
 	public void reactivThread(){
@@ -53,14 +54,14 @@ public class SearchNotificationPayementThread {
 	}
 	
 	protected void searchNotification(User user) throws ClientProtocolException, IOException {
-		String result = CallRestWeb.callWebService(user.getId()+"/getPayementNotification");
+		String result = CallRestWeb.callWebService(application, user.getId()+"/getPayementNotification");
 		try {
 			if(result!=null){
 				JSONArray jsonArray = new JSONArray(result);
 				for (int i = 0; i < jsonArray.length(); i++) {
 					JSONObject jsonUser = jsonArray.getJSONObject(i);
-					NotificationHelper notification = new NotificationHelper(mContexte);
-					notification.createNotification(jsonUser.getString("name")+" "+jsonUser.getString("firstname"));
+					NotificationHelper notification = new NotificationHelper(application);
+					notification.createNotification(jsonUser.getString("name")+" "+jsonUser.getString("firstname"),application.getResources().getString(R.string.you_are_payed));
 				}
 			}
 		}catch (JSONException e) {

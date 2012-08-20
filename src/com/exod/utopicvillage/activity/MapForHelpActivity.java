@@ -50,6 +50,7 @@ public class MapForHelpActivity extends TabMenuActivity implements OnDoubleTapLi
 
 	@Override
 	public boolean onDoubleTapEvent(MotionEvent arg0) {
+		mapView.getController().zoomIn();
 		return false;
 	}
 
@@ -67,7 +68,6 @@ public class MapForHelpActivity extends TabMenuActivity implements OnDoubleTapLi
 	}
 
 	public void displayOverlays(){
-		
 		//appel asynchrone
 		GetNearAskingHelpAsync nearAskingAsync = new GetNearAskingHelpAsync(this);
 		nearAskingAsync.execute();
@@ -78,22 +78,23 @@ public class MapForHelpActivity extends TabMenuActivity implements OnDoubleTapLi
 		List<Overlay> mapOverlays = mapView.getOverlays();
 		Drawable drawable = this.getResources().getDrawable(R.drawable.marker);
 		MapHelpOverlay<CustomOverlayItem> itemizedoverlay = new MapHelpOverlay<CustomOverlayItem>(drawable, this);
-		
-		for (Iterator<Help> iterator = colHelp.iterator(); iterator.hasNext();) {
-			Help help = (Help) iterator.next();
-			GeoPoint point = new GeoPoint((int)(help.getUser().getLatitude()*1000000),(int)(help.getUser().getLongitude()*1000000));
-			
-			String stringDesc = help.getDescritpion();
-			//on split la description dans le cas ou elle est trop longue
-			if(stringDesc!=null && stringDesc.length()>50){
-				stringDesc = help.getDescritpion().substring(0,50)+" ...";
+		if(colHelp!=null){
+			for (Iterator<Help> iterator = colHelp.iterator(); iterator.hasNext();) {
+				Help help = (Help) iterator.next();
+				GeoPoint point = new GeoPoint((int)(help.getUser().getLatitude()*1000000),(int)(help.getUser().getLongitude()*1000000));
+				
+				String stringDesc = help.getDescription();
+				//on split la description dans le cas ou elle est trop longue
+				if(stringDesc!=null && stringDesc.length()>50){
+					stringDesc = help.getDescription().substring(0,50)+" ...";
+				}
+				CustomOverlayItem overlayitem = new CustomOverlayItem(point, getResources().getString(R.string.ask_for)+" "+DateUtil.convertToStringDifDate(help.getDate()), stringDesc,"http://ia.media-imdb.com/images/M/MV5BMjAyNjk5Njk0MV5BMl5BanBnXkFtZTcwOTA4MjIyMQ@@._V1._SX40_CR0,0,40,54_.jpg");
+				overlayitem.setIdHelp(help.getId());
+				
+				itemizedoverlay.addOverlay(overlayitem);
+				mapOverlays.add(itemizedoverlay);
 			}
-			CustomOverlayItem overlayitem = new CustomOverlayItem(point, getResources().getString(R.string.ask_for)+" "+DateUtil.convertToStringDifDate(help.getDate()), stringDesc,"http://ia.media-imdb.com/images/M/MV5BMjAyNjk5Njk0MV5BMl5BanBnXkFtZTcwOTA4MjIyMQ@@._V1._SX40_CR0,0,40,54_.jpg");
-			overlayitem.setIdHelp(help.getId());
-			
-			itemizedoverlay.addOverlay(overlayitem);
-			mapOverlays.add(itemizedoverlay);
-		}	
+		}
 	}
 	
 	public void startDetailHelpActivity(String idHelp){

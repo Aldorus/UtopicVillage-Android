@@ -1,12 +1,18 @@
 package com.exod.utopicvillage.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Hashtable;
 
-public class Help {
+public class Help extends Entity implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private int id;
 	private boolean reproducible;
-	private String descritpion;
+	private String description;
 	private int amount;
 	private User user;
 	private Date date;
@@ -29,12 +35,15 @@ public class Help {
 	public void setReproducible(boolean reproducible) {
 		this.reproducible = reproducible;
 	}
-	public String getDescritpion() {
-		return descritpion;
+	
+	public String getDescription() {
+		return description;
 	}
-	public void setDescritpion(String descritpion) {
-		this.descritpion = descritpion;
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
+
 	public int getAmount() {
 		return amount;
 	}

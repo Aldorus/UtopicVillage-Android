@@ -24,7 +24,7 @@ public class NotificationHelper {
     /**
      * Put the notification into the status bar
      */
-    public void createNotification(String userName) {
+    public void createNotification(String userName,String msg) {
         //get the notification manager
         mNotificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -35,7 +35,7 @@ public class NotificationHelper {
 
         //create the content which is shown in the notification pulldown
         mContentTitle = mContext.getString(R.string.app_name); //Full title of the notification in the pull down
-        CharSequence contentText = mContext.getResources().getString(R.string.you_are_payed)+" "+userName; //Text of the notification in the pull down
+        CharSequence contentText = userName+" : "+msg+""; //Text of the notification in the pull down
 
         //you have to set a PendingIntent on a notification to tell the system what you want it to do when the notification is selected
         //I don't want to use this here so I'm just creating a blank one

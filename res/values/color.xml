@@ -19,4 +19,6 @@
     <color name="strokeWrapper">#acacac</color>
     
     <color name="stroke_field_focus">#8840a2</color>
+    
+    <color name="base_text">#222</color>
 </resources>

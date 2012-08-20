@@ -23,10 +23,9 @@
 		        style="@style/Texte"
 		        android:text="@string/namemust"
 		        android:layout_marginBottom="3dip"/>
-		    
 		    <EditText
 		        style="@style/TexteField"
-		        android:inputType="text"
+		        android:inputType="textCapSentences"
 		        android:id="@+id/nameField"
 		        android:layout_marginBottom="3dip"/>
 		    
@@ -37,7 +36,7 @@
 		    
 		    <EditText
 		        style="@style/TexteField"
-		        android:inputType="text"
+		        android:inputType="textCapSentences"
 		        android:id="@+id/firstnameField"
 		        android:layout_marginBottom="3dip"/>
 		    
@@ -46,9 +45,8 @@
 		        android:text="@string/birthdatemust"
 		        android:layout_marginBottom="3dip"/>
 		    
-		    <TextView
-		        style="@style/TexteField"
-		        android:inputType="none"
+		    <Button
+		        style="@style/TexteFieldButton"
 		        android:id="@+id/birthdateField"
 		        android:layout_marginBottom="3dip"
 		        android:onClick="doDatePicker"/>

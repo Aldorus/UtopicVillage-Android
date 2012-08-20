@@ -71,10 +71,37 @@
     <string name="emailmust">Email : *</string>
     <string name="email">Email : </string>
     <string name="passwordmust">Password : *</string>
-    <string name="desc">Description : </string>
+    <string name="desc">Parler de vous : </string>
     <string name="birthdatemust">Date de naissance : *</string>
     <string name="birthdate">Date de naissance : </string>
     <string name="connctivity_probleme">Problème de connectivité</string>
     <string name="search_label">Rechercher une demande d\'aide</string>
     <string name="modif_password">Modifier mot de passe</string>
+    <string name="you_re_chosen">Vous a choisi pour l\'aider</string>
+    
+    <string name="desc_needed">La description est obligatoire</string>
+    <string name="amount_is_numeric">Le champs montant doit contenir un numérique</string>
+    <string name="amount_needed">Le champs montant doit contenir un numérique</string>
+<!--     MESSAGE INTERNE  -->
+    <string name="GPS_enabled">Votre GPS semble éteint souhaitez-vous l\'activer?</string>
+	<string name="no_compatible_application">Vous n\'avez pas d\'application compatible installée</string>
+	<string name="yes">Oui</string>
+	<string name="cancel">Annuler</string>
+	<string name="no">Non</string>
+    
+    <!-- 	ERRORS FORMS	 -->
+	<string name="error_during_submit">Erreur dans les données</string>
+	<string name="is_in_error"> n\'est pas au bon format</string>
+	<string name="format_needed"> le format attendu est</string>
+	<string name="connectivity_problem">Problème de connectivité</string>
+	
+	<string name="choose_application">Choisissez une application</string>
+	
+<!-- 	ERRORS SERVER	 -->
+	<string name="not_found_error">L\'application n\'a pas trouvé le service</string>
+	<string name="timeout_error">Le serveur met trop de temps à répondre</string>
+	<string name="json_error">La réponse du serveur est corrompue</string>
+	<string name="server_error">Erreur innatendue du serveur</string>
+	<string name="no_data_error">Pas de données</string>
+	<string name="caracter_error">Vous avez saisi un caractère interdit</string>
 </resources>

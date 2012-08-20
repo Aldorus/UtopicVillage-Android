@@ -12,5 +12,7 @@
 
     <Button
         style="@style/Button"
-        android:text="@string/search" />
+        android:text="@string/search"
+		android:background="@drawable/button_disabled"
+		android:clickable="false"/>
 </LinearLayout>

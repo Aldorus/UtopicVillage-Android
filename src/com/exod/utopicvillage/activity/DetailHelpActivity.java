@@ -37,7 +37,7 @@ public class DetailHelpActivity extends HeaderActivity{
 			TextView titreHelp = (TextView)findViewById(R.id.textCell);
 			
 			titreHelp.setText(getResources().getString(R.string.ask_for)+" "+DateUtil.convertToStringDifDate(help.getDate()));
-			descHelp.setText(help.getDescritpion());
+			descHelp.setText(help.getDescription());
 			amountHelp.setText(help.getAmount()+" "+getResources().getString(R.string.point));
 			
 			//on test si l'on est deja volontaire pour cette aide

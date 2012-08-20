@@ -41,7 +41,7 @@ public class ParsingUtil {
 		} catch (ParseException e) {
 			Log.d("TAG","error lors du parsing de la date "+e);
 		}
-		help.setDescritpion(jsonObject.getString("description"));
+		help.setDescription(jsonObject.getString("description"));
 		return help;
 	}
 }

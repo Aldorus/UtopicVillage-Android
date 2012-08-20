@@ -85,6 +85,8 @@
 	        android:layout_width="match_parent"
 	        android:text="@string/show_on_map"
 	        android:onClick="goShowOnMap"
+	        android:clickable="false"
+	        android:background="@drawable/button_disabled"
 	        android:layout_weight="1"/>
 	    <Button
 	        android:id="@+id/button_volunteer"

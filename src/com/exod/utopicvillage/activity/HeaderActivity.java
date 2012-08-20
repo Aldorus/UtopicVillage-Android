@@ -8,7 +8,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.exod.utopicvillage.R;
-import com.exod.utopicvillage.service.LocationService;
+import com.exod.utopicvillage.application.UtopicVillageApplication;
+import com.exod.utopicvillage.service.CustomLocationService;
 import com.exod.utopicvillage.store.Storage;
 
 public class HeaderActivity extends MasterActivity{
@@ -36,8 +37,10 @@ public class HeaderActivity extends MasterActivity{
 		}
 		
 		//on active le service de geolocalisation
-		intentService = new Intent(this, LocationService.class);
-		startService(intentService);
+		if(((UtopicVillageApplication)getApplication()).isAskGPS()){
+			intentService = new Intent(this, CustomLocationService.class);
+			startService(intentService);
+		}
 		//on active le service de messagerie
 		
 		

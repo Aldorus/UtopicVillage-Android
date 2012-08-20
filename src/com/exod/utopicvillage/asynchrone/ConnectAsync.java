@@ -1,15 +1,16 @@
 package com.exod.utopicvillage.asynchrone;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.exod.utopicvillage.activity.ConnectActivity;
-import com.exod.utopicvillage.util.ParsingUtil;
+import com.exod.utopicvillage.application.UtopicVillageApplication;
+import com.exod.utopicvillage.entity.User;
+import com.exod.utopicvillage.util.JSONParser;
 
-public class ConnectAsync extends AsyncTask<Void, Integer, Boolean> {
+public class ConnectAsync extends AsyncTask<Void, Integer, Integer> {
 
 	ConnectActivity activity;
 	String email,password;
@@ -22,35 +23,23 @@ public class ConnectAsync extends AsyncTask<Void, Integer, Boolean> {
 	}
 	
 	@Override
-	protected Boolean doInBackground(Void... params) {
-		JSONObject jsonObject;
-		String status;
-		try {
-			String resultWebServ = null;
-			resultWebServ = CallRestWeb.callWebService(activity,email+"/"+password+"/testConnect");
-			
-			if(resultWebServ==null){
-				return false;
-			}
-			jsonObject = new JSONObject(resultWebServ);
-			
-			status = jsonObject.getString("status");
-		} catch (JSONException e) {
-			return false;
-		} 
-		
-		if("ok".equals(status)){
-			//on set l'user 
+	protected Integer doInBackground(Void... params) {
+		String resultWebServ = CallRestWeb.callWebService(activity,email+"/"+password+"/testConnect");
+		if(resultWebServ==null){
+			return 0;
+		}else if("nook".equals(resultWebServ)){
+			return 2;
+		}else{
 			try {
-				JSONObject jsonObjectUser = jsonObject.getJSONObject("user");
-				activity.utopicVillageApplication.getStorage().setUser(ParsingUtil.toUser(jsonObjectUser));
-			} catch (JSONException e) {
+				JSONObject jsonObject = new JSONObject(resultWebServ);
+				activity.utopicVillageApplication.getStorage().setUser((User) JSONParser.toEntity(jsonObject.getJSONObject("user"), new User()));
+			} catch (Exception e) {
 				Log.d("error","error lors du parsing "+e);
-				return false;
+				((UtopicVillageApplication)activity.getApplication()).catchErrorServer();
+				return 0;
 			}
-			return true;
+			return 1;
 		}
-		return false;
 	}
 	
 	@Override
@@ -60,7 +49,7 @@ public class ConnectAsync extends AsyncTask<Void, Integer, Boolean> {
 	}
 	
 	@Override
-    protected void onPostExecute(Boolean result) {
+    protected void onPostExecute(Integer result) {
 		activity.callbackAsync(result);
     }
 }

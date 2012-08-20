@@ -1,8 +1,5 @@
 package com.exod.utopicvillage.asynchrone;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.os.AsyncTask;
 
 import com.exod.utopicvillage.activity.HelpMeActivity;
@@ -20,24 +17,14 @@ public class InsertHelpAsync extends AsyncTask<Help,Integer,Boolean>{
 	
 	@Override
 	protected Boolean doInBackground(Help... params) {
-		JSONObject jsonObject;
-		String status=null;
-		try {
-			String resultWebServ = null;
-			resultWebServ = CallRestWeb.callWebService(activity,help.getUser().getId()+"/"+help.getAmount()+"/"+help.getDescritpion()+"/"+help.isReproducible()+"/insertHelp");
-			if(resultWebServ==null){
-				return false;
-			}
-			jsonObject = new JSONObject(resultWebServ);
-			
-			status = jsonObject.getString("status");
-		} catch (JSONException e) {
+		String resultWebServ = null;
+		resultWebServ = CallRestWeb.callWebService(activity,help.getUser().getId()+"/"+help.getAmount()+"/"+help.getDescription()+"/"+help.isReproducible()+"/insertHelp");
+		if(resultWebServ==null){
 			return false;
-		} 
-		if("ok".equals(status)){
+		}
+		if("ok".equals(resultWebServ)){
 			return true;
 		}
-		
 		return false;
 	}
 	

@@ -2,11 +2,12 @@ package com.exod.utopicvillage.entity;
 
 import java.util.Date;
 
+import android.location.Location;
 import android.widget.ImageView;
 
 import com.exod.utopicvillage.R;
 
-public class User {
+public class User extends Entity{
 	//classe de descritpion d'un user
 	private int id;
 	private String name;
@@ -88,6 +89,11 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public void setLocation(Location location){
+		this.latitude = location.getLatitude();
+		this.longitude = location.getLongitude();
 	}
 	
 }

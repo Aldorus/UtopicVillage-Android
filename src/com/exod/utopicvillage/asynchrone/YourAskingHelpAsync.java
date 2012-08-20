@@ -1,15 +1,15 @@
 package com.exod.utopicvillage.asynchrone;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.exod.utopicvillage.activity.YourAskingHelpActivity;
+import com.exod.utopicvillage.application.UtopicVillageApplication;
 import com.exod.utopicvillage.entity.Help;
 import com.exod.utopicvillage.entity.User;
-import com.exod.utopicvillage.util.ParsingUtil;
+import com.exod.utopicvillage.util.JSONParser;
 
 public class YourAskingHelpAsync extends AsyncTask<Void,Integer,Help>{
 	
@@ -28,24 +28,26 @@ public class YourAskingHelpAsync extends AsyncTask<Void,Integer,Help>{
 		resultWebServ = CallRestWeb.callWebService(activity, user.getId()+"/askingHelp");
 		
 		try {
-			JSONObject jsonObject = (JSONObject) new JSONObject(resultWebServ);
-			if(!"ok".equals(jsonObject.getString("status"))){
+			if("nook".equals(resultWebServ)){
 				return null;
-			}
-			help = ParsingUtil.toHelp(jsonObject);
-			help.setUser(user);
+			}else{
+				JSONObject jsonObject = (JSONObject) new JSONObject(resultWebServ);
+				help = (Help)JSONParser.toEntity(jsonObject.getJSONObject("help"), new Help());
+				help.setUser(user);
 			
-			//Set du participant si il existe
-			//TODO
-			if(!jsonObject.isNull("participant")){
-				JSONObject jsonParticipant = jsonObject.getJSONObject("participant");
-				if(jsonParticipant!=null){
-					User participant = ParsingUtil.toUser(jsonParticipant);
-					help.setParticipant(participant);
+				//Set du participant si il existe
+				//TODO
+				if(!jsonObject.isNull("participant")){
+					JSONObject jsonParticipant = jsonObject.getJSONObject("participant");
+					if(jsonParticipant!=null){
+						User participant = (User)JSONParser.toEntity(jsonParticipant, new User());
+						help.setParticipant(participant);
+					}
 				}
 			}
-		} catch (JSONException e) {
+		} catch (Exception e) {
 			Log.d("TAG","error lors du parsing JSON asking help "+e);
+			((UtopicVillageApplication)activity.getApplication()).catchErrorServer();
 			return null;
 		}
 		
@@ -60,7 +62,7 @@ public class YourAskingHelpAsync extends AsyncTask<Void,Integer,Help>{
 	
 	@Override
 	protected void onPostExecute(Help result) {
-		activity.displayData();
 		activity.displayInfoHelp(result);
+		activity.displayData();
 	}
 }

@@ -2,18 +2,16 @@ package com.exod.utopicvillage.activity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
-import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.DatePicker;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import com.exod.utopicvillage.R;
@@ -28,6 +26,10 @@ public class RegisterActivity extends MasterActivity{
 	}
 	
 	public void goRegister(View view){
+		//close keyboard
+		InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+	    imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+		
 		TextView textName = (TextView)findViewById(R.id.nameField);
 		TextView textFirstname = (TextView)findViewById(R.id.firstnameField);
 		TextView textBirthdate = (TextView)findViewById(R.id.birthdateField);
@@ -53,7 +55,6 @@ public class RegisterActivity extends MasterActivity{
 			SimpleDateFormat spFormat = new SimpleDateFormat("dd/MM/yyyy");
 			Date birthdate=null;
 			try {
-				
 				birthdate = spFormat.parse(textBirthdate.getText()+"");
 			} catch (ParseException e) {
 				Log.d("Error","Error lors du parsing de la date "+e);
@@ -64,8 +65,10 @@ public class RegisterActivity extends MasterActivity{
 		}
 	}
 	
-	public void callbackRegister(Boolean result,String email, String password){
-		if(result){
+	public void callbackRegister(String result,String email, String password){
+		if(result==null){
+			//nothing, the application have already react
+		}else if("ok".equals(result)){
 			Intent intent = new Intent(this,ConnectActivity.class);
 			intent.putExtra("email", email);
 			intent.putExtra("password", password);
@@ -74,52 +77,10 @@ public class RegisterActivity extends MasterActivity{
 		}else{
 			//error
 			Builder alertBuilder = new AlertDialog.Builder(this);
-			alertBuilder.setMessage(getResources().getString(R.string.error_information));
+			alertBuilder.setMessage(result);
 			alertBuilder.setNeutralButton(getResources().getString(R.string.close), null);
 			alertBuilder.setTitle(getResources().getString(R.string.Woops));
 			alertBuilder.create().show();
 		}
 	}
-	
-	
-	/***DATE PICKER****/
-	
-	static final int DATE_DIALOG_ID = 42;
-	public void doDatePicker(View vienw){
-		showDialog(DATE_DIALOG_ID);
-	}
-	@Override
-	protected Dialog onCreateDialog(int id) {
-		Calendar c = Calendar.getInstance();
-		c.add(Calendar.YEAR, -20);
-		int year = c.get(Calendar.YEAR);
-		int month = c.get(Calendar.MONTH);
-		int day = c.get(Calendar.DAY_OF_MONTH);
-		switch (id) {
-		case DATE_DIALOG_ID:
-		   // set date picker as current date
-		   return new DatePickerDialog(this, datePickerListener, 
-                         year, month,day);
-		}
-		return null;
-	}
- 
-	private DatePickerDialog.OnDateSetListener datePickerListener 
-                = new DatePickerDialog.OnDateSetListener() {
- 
-		// when dialog box is closed, below method will be called.
-		public void onDateSet(DatePicker view, int selectedYear,int selectedMonth, int selectedDay) {
-			
-			TextView textBirthdate = (TextView)findViewById(R.id.birthdateField);
-			
-			// set selected date into textview
-			textBirthdate.setText(new StringBuilder().append(selectedDay)
-			   .append("/").append(selectedMonth + 1).append("/").append(selectedYear)
-			   .append(" "));
- 
-			// set selected date into datepicker also
-			//dpResult.init(year, month, day, null);
- 
-		}
-	};
 }

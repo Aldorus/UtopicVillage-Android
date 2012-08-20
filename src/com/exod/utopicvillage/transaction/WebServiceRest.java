@@ -66,7 +66,7 @@ public class WebServiceRest{
 				} catch (ParseException e) {
 					Log.d("TAG","error lors du parsing de la date "+e);
 				}
-				help.setDescritpion(jsonHelp.getString("description"));
+				help.setDescription(jsonHelp.getString("description"));
 				JSONObject jsonUser = jsonHelp.getJSONObject("user");
 				User userWhoAsk = new User();
 				userWhoAsk.setId(jsonUser.getInt("id"));
@@ -101,7 +101,7 @@ public class WebServiceRest{
 				} catch (ParseException e) {
 					Log.d("TAG","error lors du parsing de la date "+e);
 				}
-				help.setDescritpion(jsonHelp.getString("description"));
+				help.setDescription(jsonHelp.getString("description"));
 				JSONObject jsonUser = jsonHelp.getJSONObject("user");
 				User userWhoAsk = new User();
 				userWhoAsk.setId(jsonUser.getInt("id"));

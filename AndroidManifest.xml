@@ -10,6 +10,8 @@
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 <!--     <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/> -->
     <uses-permission android:name="android.permission.ACCESS_GPS"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    
     
     <application
         android:name=".application.UtopicVillageApplication" 
@@ -37,13 +39,19 @@
         <activity android:name=".activity.FichePlayerActivity"/>
         <activity android:name=".activity.RegisterActivity"/>
         <activity android:name=".activity.ModifProfilActivity"/>
-        <activity android:name=".activity.SearchableActivity" >
+        <activity android:name=".activity.SearchableActivity">
         	<intent-filter>
 	        	<action android:name="android.intent.action.SEARCH" />
 	        </intent-filter>
 	        <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
 	    </activity>
 	    
+        <activity android:name=".alert.AlertNoGPSActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:name=".alert.AlertErrorActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:name=".alert.AlertNoCompatibleApplication" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:name=".alert.AlertErrorWS" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+	    
         <service android:name=".service.LocationService"/>
+        <service android:name=".service.CustomLocationService"/>
     </application>
 </manifest>

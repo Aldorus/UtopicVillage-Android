@@ -3,6 +3,8 @@ package com.exod.utopicvillage.activity;
 import java.util.Collection;
 import java.util.Hashtable;
 
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,9 +36,17 @@ public class YourAskingHelpActivity extends TabMenuActivity{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState,R.layout.your_asking_help);
-	    
-	    //on charge la liste view
-	    getYourAskingHelp();
+	    if(utopicVillageApplication.errorServer){
+		    //on affiche les erreur si il yen a eu
+			Builder alertBuilder = new AlertDialog.Builder(this);
+			alertBuilder.setMessage(getResources().getString(R.string.connctivity_probleme));
+			alertBuilder.setNeutralButton(getResources().getString(R.string.close), null);
+			alertBuilder.setTitle(getResources().getString(R.string.Woops));
+			alertBuilder.create().show();
+		    //on repasse le flag a false
+			utopicVillageApplication.errorServer=false;
+	    }
+		getYourAskingHelp();
 	}
 	
 	public void goAskHelp(View view){
@@ -45,7 +55,6 @@ public class YourAskingHelpActivity extends TabMenuActivity{
 	}
 	
 	private void getYourAskingHelp(){
-		
 		//asynchrone 
 		YourAskingHelpAsync askingHelpAsync = new YourAskingHelpAsync(this);
 		askingHelpAsync.execute();
@@ -94,6 +103,7 @@ public class YourAskingHelpActivity extends TabMenuActivity{
 		//changment de vue pour prise en compte de la suppression
 		Intent intent = new Intent(this,YourAskingHelpActivity.class);
 		startActivity(intent);
+		finish();
 	}
 	
 	public void takeThisVolunteer(View view){
@@ -106,6 +116,7 @@ public class YourAskingHelpActivity extends TabMenuActivity{
 	public void insertedParticipant(){
 		Intent intent = new Intent(this,YourAskingHelpActivity.class);
 		startActivity(intent);
+		finish();
 	}
 	
 	public void setViewOfHelp(){
@@ -134,7 +145,7 @@ public class YourAskingHelpActivity extends TabMenuActivity{
 		TextView nombre_point = (TextView) theInflatedView.findViewById(R.id.nombre_point);
 		textId.setText(help.getId()+"");
 		text.setText(getResources().getString(R.string.ask_for)+" "+DateUtil.convertToStringDifDate(help.getDate())+"");
-		sousText.setText(help.getDescritpion()+"");
+		sousText.setText(help.getDescription()+"");
 		nombre_point.setText(help.getAmount()+" "+getResources().getString(R.string.point));
 	}
 	
@@ -244,6 +255,7 @@ public class YourAskingHelpActivity extends TabMenuActivity{
 		
 		Intent intent = new Intent(this,YourAskingHelpActivity.class);
 		startActivity(intent);
+		finish();
 	}
 	
 	public void goDetail(View view){

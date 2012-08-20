@@ -65,7 +65,16 @@
         <item name="android:padding">@dimen/padding_button</item>
         <item name="android:gravity">top</item>
     </style>
-    
+    <style name="TexteFieldButton" parent="@android:style/Widget.Button">
+        <item name="android:textSize">@dimen/font_size_menu</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+<!--         <item name="android:layout_margin">@dimen/margin_text</item> -->
+        <item name="android:background">@drawable/field_state</item>
+        <item name="android:padding">@dimen/padding_button</item>
+        <item name="android:gravity">top</item>
+    </style>
     
     <style name="Button" parent="@android:style/Widget.Button">
         <item name="android:layout_width">match_parent</item>
@@ -85,5 +94,19 @@
         <item name="android:textColor">@color/text_color_button</item>
 <!-- 		<item name="android:typeface">@font/trebuc</item> -->
         <item name="android:textSize">@dimen/font_size_menu</item>
+    </style>
+    
+    <style name="text" parent="@android:style/Widget.TextView">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/base_text</item>
+    </style>
+    
+    <style name="textCell" parent="@android:style/Widget.TextView">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textColor">@color/base_text</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
     </style>
 </resources>

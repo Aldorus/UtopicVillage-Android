@@ -32,7 +32,8 @@ public class GetNearAskingHelpAsync extends AsyncTask<Void,Integer,Collection<He
 		resultWebServ = CallRestWeb.callWebService(activity,user.getId()+"/"+user.getLatitude()+"/"+user.getLongitude()+"/getNearAskingHelp");
 		
 		try {
-			JSONArray jsonArray = new JSONArray(resultWebServ);
+			JSONObject jsonObject = new JSONObject(resultWebServ);
+			JSONArray jsonArray = jsonObject.getJSONArray("helps");
 			for (int i = 0; i < jsonArray.length(); i++) {
 				JSONObject jsonHelp	= jsonArray.getJSONObject(i);
 				Help help = ParsingUtil.toHelp(jsonHelp);

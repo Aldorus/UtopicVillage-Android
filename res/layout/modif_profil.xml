@@ -46,9 +46,8 @@
 		        android:text="@string/birthdatemust"
 		        android:layout_marginBottom="3dip"/>
 		    
-		    <TextView
-		        style="@style/TexteField"
-		        android:inputType="none"
+		    <Button
+		        style="@style/TexteFieldButton"
 		        android:id="@+id/birthdateField"
 		        android:layout_marginBottom="3dip"
 		        android:onClick="doDatePicker"/>

@@ -26,16 +26,20 @@ public class GetVolunteerAsync extends AsyncTask<Void, Integer, Boolean>{
 		if(askingHelp!=null){
 			String result = null;
 			result = CallRestWeb.callWebService(activity,askingHelp.getId()+"/getVolunteer");
-			try {
-				JSONArray jsonArray = new JSONArray(result);
-				for (int i = 0; i < jsonArray.length(); i++) {
-					JSONObject jsonUser = jsonArray.getJSONObject(i);
-					User volunteer = ParsingUtil.toUser(jsonUser);
-					askingHelp.getHashVolunteer().put(new Integer((int) volunteer.getId()), volunteer);
+			if(result!=null){
+				try {
+					JSONObject jsonObject = new JSONObject(result);
+					JSONArray jsonArray = jsonObject.getJSONArray("volunteers");
+					for (int i = 0; i < jsonArray.length(); i++) {
+						JSONObject jsonUser = jsonArray.getJSONObject(i);
+						User volunteer = ParsingUtil.toUser(jsonUser);
+						askingHelp.getHashVolunteer().put(new Integer((int) volunteer.getId()), volunteer);
+					}
+				} catch (JSONException e) {
+					Log.d("Error","error lors du parsing JSON "+e);
 				}
-				
-			} catch (JSONException e) {
-				Log.d("Error","error lors du parsin JONS "+e);
+			}else{
+				return null;
 			}
 		}
 		return true;

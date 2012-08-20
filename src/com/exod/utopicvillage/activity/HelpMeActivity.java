@@ -1,10 +1,12 @@
 package com.exod.utopicvillage.activity;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import com.exod.utopicvillage.R;
@@ -18,13 +20,17 @@ public class HelpMeActivity extends HeaderActivity{
 	}
 	
 	public void goAskHelp(View view){
+		//close keyboard
+		InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+	    imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+		
 		Help help = new Help();
-		boolean error = false;
+		String error = "";
 		TextView labelDesc = (TextView)findViewById(R.id.descField);
 		if(labelDesc!=null && !"".equals(labelDesc.getText())){
-			help.setDescritpion(labelDesc.getText()+"");
+			help.setDescription(labelDesc.getText()+"");
 		}else{
-			error=true;
+			error+=getResources().getString(R.string.desc_needed);
 		}
 		TextView labelAmount = (TextView)findViewById(R.id.amountField);
 		if(labelAmount!=null && !"".equals(labelAmount.getText())){
@@ -32,27 +38,27 @@ public class HelpMeActivity extends HeaderActivity{
 				help.setAmount(Integer.parseInt(labelAmount.getText()+""));
 				if(help.getAmount()>storage.getUser().getAmount()){
 					//not_enought_money
-					error=true;
+					error+=getResources().getString(R.string.not_enought_money);;
 				}
 			}catch (Exception e) {
-				error=true;
+				error+=getResources().getString(R.string.amount_is_numeric);
 			}
 		}else{
-			error=true;
+			error+=getResources().getString(R.string.amount_needed);
 		}
+		
 		help.setReproducible(false);
 		help.setUser(storage.getUser());
 		
-		if(!error){
-			
-			///asynchrone 
+		//if no error
+		if("".equals(error)){
+			//asynchrone 
 			InsertHelpAsync helpAsync = new InsertHelpAsync(help, this);
 			helpAsync.execute();
-			
 		}else{
-			//alert error
+			//else we alert about errors
 			Builder alertBuilder = new AlertDialog.Builder(this);
-			alertBuilder.setMessage(getResources().getString(R.string.error_information));
+			alertBuilder.setMessage(error);
 			alertBuilder.setNeutralButton(getResources().getString(R.string.close), null);
 			alertBuilder.setTitle(getResources().getString(R.string.Woops));
 			alertBuilder.create().show();
