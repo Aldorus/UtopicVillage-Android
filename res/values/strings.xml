@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="map_key">09Is1g6wFNmsKYqpSNXmVMtJ85gswb4haZ7IXDA</string>
+    <string name="app_name">Utopic Village</string>
+    <string name="exod_creation">Exod Creation</string>
+    <string name="title_menu">Menu</string>
+    <string name="menu_helpme">Aidez-moi</string>
+    <string name="menu_volonteer">Participer</string>
+    <string name="menu_me">Moi</string>
+    
+    <string name="email:">Email :</string>
+    <string name="password:">Password :</string>
+    <string name="connect">Se Connecter</string>
+    <string name="register">S\'inscrire</string>
+    <string name="forgot_password">Mot de passe oublié</string>
+    <string name="wrongConnect">Mauvaise combinaison</string>
+    <string name="close">Fermer</string>
+    <string name="Woops">Woops</string>
+    <string name="doing_ask_help">Vous avez besoin d\'aide?</string>
+    <string name="ask_help">Demander!</string>
+    <string name="confimer">Valider</string>
+    <string name="desc:">Descriptif :</string>
+    <string name="amount:">Montant :</string>
+    <string name="error_information">Les informations renseignés comportent des erreurs</string>
+    <string name="help">Aide</string>
+    <string name="avatar">Avatar joueur</string>
+    <string name="logoExod">Logo de exod creation</string>
+    <string name="logoUtopic">Logo de Utopic Village</string>
+    <string name="puce">puce</string>
+    <string name="no_helpQ">Vous n\'avez pas demandé d\'aide? N\'hésitez pas cette application est faite pour ça.</string>
+    <string name="ask_helpQ">N\'hésitez pas à demander de l\'aide. Pour cela rien de plus simple, entrez simplement une description de ce dont avez besoin.\nVous serez notifié lorsque quelqu\'un se portera volontaire.</string>
+    <string name="use_hashtags">Inserez-y des hashtags # pour augmenter votre visibilité</string>
+    <string name="search">Rechercher</string>
+    <string name="ask_for">Demandée il y a </string>
+    <string name="to_be_volunteer">Se porter volontaire</string>
+    <string name="volunteer">volontaire</string>
+    <string name="volunteers">volontaires</string>
+    <string name="already_volonteer">Déjà volontaire</string>
+    <string name="you_re_volunteer">Vous vous êtez porté volontaire pour cette demande d\'aide</string>
+    <string name="element_for_baloon">Element pour le balon</string>
+    <string name="cancel_help">Annuler cette demande</string>
+    <string name="show_on_map">Voir sur la carte</string>
+    <string name="be_volunteer">Participer</string>
+    <string name="for_many">Pour </string>
+    <string name="point">points</string>
+    <string name="report_help">Signaler cette demande</string>
+    <string name="reported_help">Vous avez signalé cette demande</string>
+    <string name="take_this_volunteer">Prendre ce volontaire</string>
+    <string name="label_volunteer">Volontaires : </string>
+    <string name="label_participant">Participant : </string>
+    <string name="see_user_detail">Voir la fiche du joueur</string>
+    <string name="unknow_fame">Reputation : Inconnue</string>
+    <string name="fame">Reputation : </string>
+    <string name="payer">Payer</string>
+    <string name="not_enought_money">Vous n\'avez pas assez d\'argent</string>
+    <string name="log_out">Déconnexion</string>
+    <string name="payement_done">Le payement pour cette aide a été effectué</string>
+    <string name="accept_your_hand">a accepté la main que vous lui tendiez</string>
+    <string name="you_are_payed">Vous avez été payé par</string>
+    <string name="modif_info">Modifier</string>
+    <string name="feats">Exploits</string>
+    <string name="friends">Amis</string>
+    <string name="position">Position</string>
+    <string name="option">Options</string>
+    <string name="history">Historique</string>
+    <string name="report_player">Signaler ce joueur</string>
+    <string name="reported_player">Vous avez signalé ce joueur</string>
+    <string name="send_message">Envoyer un message</string>
+    <string name="send_friend_asking">Ajouter comme ami</string>
+    <string name="namemust">Nom : *</string>
+    <string name="firstnamemust">Prénom : *</string>
+    <string name="field_must">* = Champs obligatoire</string>
+    <string name="emailmust">Email : *</string>
+    <string name="email">Email : </string>
+    <string name="passwordmust">Password : *</string>
+    <string name="desc">Parler de vous : </string>
+    <string name="birthdatemust">Date de naissance : *</string>
+    <string name="birthdate">Date de naissance : </string>
+    <string name="connctivity_probleme">Problème de connectivité</string>
+    <string name="search_label">Rechercher une demande d\'aide</string>
+    <string name="modif_password">Modifier mot de passe</string>
+    <string name="you_re_chosen">Vous a choisi pour l\'aider</string>
+    <string name="desc_needed">La description est obligatoire</string>
+    <string name="amount_is_numeric">Le champs montant doit contenir un numérique</string>
+    <string name="amount_needed">Le champs montant doit contenir un numérique</string>
+    
+<!--     MEW PASSWORD 	-->
+    <string name="old_password">Ancien mot de passe : *</string>
+    <string name="new_password">Nouveau mot de passe : *</string>
+    <string name="confirm_password">Confirmer votre nouveau mot de passe : *</string>
+    <string name="old_password_needed">L\'ancien mot de passe est obligatoire</string>
+    <string name="new_password_needed">Le nouveau mot de passe est obligatoire</string>
+    <string name="confirm_password_needed">Le mot de passe de confirmation est obligatoire</string>
+    <string name="old_password_unknow">L\'ancien mot de passe est incorrect</string>
+    <string name="match_new_confirm">Le nouveau mot de passe n\'est pas identique au mot de passe de confirmation</string>
+    <string name="new_password_ok">Vous avez changé votre mot de passe</string>
+    
+<!--     FORGOTTEN PASSWORD 	-->
+    <string name="forgot_passwordQ">Mot de passe oublié?</string>
+    <string name="text_password">Indiquer votre adresse email, un nouveau mot de passe vous sera envoyé</string>
+    <string name="ok">Ok</string>
+    <string name="new_forgotten_password_ok">Votre nouveau mot de passe vous a bien été envoyé</string>
+    <string name="email_unknow">Cet email n\'est pas enregistré</string>
+    
+<!--     MESSAGE INTERNE  -->
+    <string name="GPS_enabled">Votre GPS semble éteint souhaitez-vous l\'activer?</string>
+	<string name="no_compatible_application">Vous n\'avez pas d\'application compatible installée</string>
+	<string name="yes">Oui</string>
+	<string name="cancel">Annuler</string>
+	<string name="no">Non</string>
+    
+    <!-- 	ERRORS FORMS	 -->
+	<string name="error_during_submit">Erreur dans les données</string>
+	<string name="is_in_error"> n\'est pas au bon format</string>
+	<string name="format_needed"> le format attendu est</string>
+	<string name="connectivity_problem">Problème de connectivité</string>
+	
+	<string name="choose_application">Choisissez une application</string>
+	
+<!-- 	ERRORS SERVER	 -->
+	<string name="not_found_error">L\'application n\'a pas trouvé le service</string>
+	<string name="timeout_error">Le serveur met trop de temps à répondre</string>
+	<string name="json_error">La réponse du serveur est corrompue</string>
+	<string name="server_error">Erreur innatendue du serveur</string>
+	<string name="no_data_error">Pas de données</string>
+	<string name="caracter_error">Vous avez saisi un caractère interdit</string>
+</resources>

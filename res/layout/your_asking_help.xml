@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/ContentLinear"
+    android:id="@+id/main_content">
+    
+    <LinearLayout 
+        android:id="@+id/your_asking_help"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+    </LinearLayout>
+    <LinearLayout 
+        android:id="@+id/your_help_message"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:background="@drawable/balloon_overlay_unfocused">
+    </LinearLayout>
+    <Button
+        android:id="@+id/bouton_new_help"
+        style="@style/Button"
+        android:text="@string/doing_ask_help" 
+        android:onClick="goAskHelp"/>
+    
+    <TextView
+        android:id="@+id/label_volunteer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dip"
+        android:textColor="@color/text_color_header"
+        android:padding="10dip"
+        android:text="@string/label_volunteer"
+        android:background="@drawable/wrapper_top_content"/>
+    
+    <LinearLayout 
+        android:id="@+id/your_participant"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+        
+    </LinearLayout>
+    <ListView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/list_view_user"/>
+</LinearLayout>

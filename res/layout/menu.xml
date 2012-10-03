@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MenuLinear">
+    <LinearLayout style="@style/LinearElementMenu" android:onClick="goHelpMe" android:id="@+id/element_menu_helpme">
+        <TextView style="@style/TexteForButton" android:text="@string/menu_helpme"/>
+    </LinearLayout>
+    <LinearLayout style="@style/LinearElementMenu" android:onClick="goVolunteer" android:id="@+id/element_menu_volunteer">
+        <TextView style="@style/TexteForButton" android:text="@string/menu_volonteer"/>
+    </LinearLayout>
+    <LinearLayout style="@style/LinearElementMenu" android:onClick="goMe" android:id="@+id/element_menu_me">
+        <TextView style="@style/TexteForButton" android:text="@string/menu_me"/>
+    </LinearLayout>
+</LinearLayout>

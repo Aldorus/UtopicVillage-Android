@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   	style="@style/ContentLinear">
+    <LinearLayout
+        android:baselineAligned="false"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:padding="@dimen/padding_content"
+	    android:background="@drawable/wrapper_content">
+        
+	<!--         Champ hidden -->
+	        <TextView 
+				android:id="@+id/idCell"
+				android:visibility="gone"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"/>
+	<!--     	fin des champs cachés  -->
+	  	
+	  	
+	  	<ImageView 
+	  	    android:contentDescription="@string/avatar"
+	  	    android:src="@drawable/profil_default"
+	  	    android:layout_width="60dip"
+	  	    android:layout_height="60dip"
+	  	    android:background="@drawable/bordered"
+	  	    android:onClick="goShowProfil"/>
+	  	
+	  	<LinearLayout
+	        android:layout_width="0dip"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical"
+	        android:layout_weight="1">
+		    <TextView
+		        android:id="@+id/textCell"
+		        android:textSize="@dimen/font_size_menu"
+		        android:textColor="@color/text_color_titre"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:text=""
+				android:layout_marginLeft="@dimen/margin_text"/>
+		    <TextView
+		        android:id="@+id/sousTextCell"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:textSize="@dimen/font_size_little"
+		        android:textColor="@color/text_color_little"
+		        android:text=""
+				android:layout_marginLeft="@dimen/margin_text"/>
+		    
+		    <TextView
+		        android:id="@+id/amountHelp"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:textSize="@dimen/font_size_little"
+		        android:textColor="@color/text_color_little"
+		        android:text=""
+		        android:gravity="right"
+		        android:layout_marginLeft="@dimen/margin_text"/>
+		</LinearLayout>
+	</LinearLayout>
+
+    
+	<TableLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:background="@drawable/wrapper_bottom_content"
+	    android:padding="@dimen/padding_content"
+	    
+		android:orientation="horizontal">
+	  	<TableRow >
+	  	<Button
+	        style="@style/Button"
+	        android:layout_width="match_parent"
+	        android:text="@string/report_help"
+	        android:onClick="goReportHelp"
+	        android:layout_marginRight="1dip"
+	        android:layout_marginBottom="2dip"
+	        android:background="@drawable/button_state"
+	        android:layout_weight="1"/>
+	  	<Button
+	        style="@style/Button"
+	        android:layout_width="match_parent"
+	        android:text="@string/see_user_detail"
+	        android:onClick="goShowProfil"
+	        android:layout_marginLeft="1dip"
+	        android:layout_marginBottom="2dip"
+	        android:background="@drawable/button_state"
+	        android:layout_weight="1"/>
+	  	</TableRow>
+	  	<TableRow>
+		<Button
+	        android:id="@+id/button_show_on_map"
+	        style="@style/Button"
+	        android:layout_width="match_parent"
+	        android:text="@string/show_on_map"
+	        android:onClick="goShowOnMap"
+	        android:layout_marginRight="1dip"
+	        android:clickable="false"
+	        android:background="@drawable/button_disabled"
+	        android:layout_weight="1"/>
+	    <Button
+	        android:id="@+id/button_volunteer"
+	        style="@style/Button"
+	        android:layout_width="match_parent"
+	        android:layout_marginLeft="1dip"
+	        android:text="@string/be_volunteer"
+	        android:onClick="goToBeVolunteer"
+	        android:layout_weight="1"/>
+	    </TableRow>
+	</TableLayout>
+</LinearLayout>

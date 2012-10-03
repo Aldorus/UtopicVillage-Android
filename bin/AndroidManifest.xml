@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.exod.utopicvillage"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk android:minSdkVersion="8" />
+    
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+<!--     <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/> -->
+    <uses-permission android:name="android.permission.ACCESS_GPS"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    
+    
+    <application
+        android:name=".application.UtopicVillageApplication" 
+        android:theme="@android:style/Theme.Light.NoTitleBar"
+        android:icon="@drawable/ic_launcher_utopic"
+        android:label="@string/app_name">
+        
+        <uses-library android:name="com.google.android.maps" />
+    
+        <activity
+            android:name=".activity.ConnectActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+         <activity android:name=".activity.SplatchActivity"/>
+        <activity android:name=".activity.HelpMeActivity"/>
+        <activity android:name=".activity.YourAskingHelpActivity"/>
+        <activity android:name=".activity.UnderConstructActivity"/>
+        <activity android:name=".activity.DetailHelpActivity"/>
+        <activity android:name=".activity.MapForHelpActivity"/>
+        <activity android:name=".activity.MonProfilActivity"/>
+        <activity android:name=".activity.FichePlayerActivity"/>
+        <activity android:name=".activity.RegisterActivity"/>
+        <activity android:name=".activity.ModifProfilActivity"/>
+        <activity android:name=".activity.UpdatePasswordActivity"/>
+        <activity android:name=".activity.SearchableActivity">
+        	<intent-filter>
+	        	<action android:name="android.intent.action.SEARCH" />
+	        </intent-filter>
+	        <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
+	    </activity>
+	    
+        <activity android:name=".alert.AlertNoGPSActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:name=".alert.AlertErrorActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:name=".alert.AlertNoCompatibleApplication" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:name=".alert.AlertErrorWithMessage" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+	    <activity android:name=".alert.PromptForgottenPasswordAlert" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+	    
+        <service android:name=".service.LocationService"/>
+        <service android:name=".service.CustomLocationService"/>
+    </application>
+</manifest>
