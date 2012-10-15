@@ -1,3 +1,7 @@
+/**
+ * @author Roussel Guillaume
+ * @licence CC-BY-NC
+ */
 package com.exod.utopicvillage.application;
 
 //this class is a container for all errors who can product be the application

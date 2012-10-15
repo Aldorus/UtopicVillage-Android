@@ -1,3 +1,7 @@
+/**
+ * @author Roussel Guillaume
+ * @licence CC-BY-NC
+ */
 package com.exod.utopicvillage.entity;
 
 import java.io.Serializable;
